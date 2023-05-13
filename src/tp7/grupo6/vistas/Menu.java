@@ -5,12 +5,14 @@
  */
 package tp7.grupo6.vistas;
 
+import tp7.grupo6.Alumno;
+
 /**
  *
  * @author solmedina
  */
 public class Menu extends javax.swing.JFrame {
-
+public static Alumno alumno=new Alumno();
     /**
      * Creates new form Menu
      */
@@ -106,7 +108,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAltaAlumnoActionPerformed
 
     private void jMenuItemFormularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFormularioActionPerformed
-        // TODO add your handling code here:
+        // Formlario inscripcion
         escritorio.removeAll();//removemos todo
         escritorio.repaint();
         ViewFormularioInscripcion vfi=new ViewFormularioInscripcion();//crer nueva ventana
