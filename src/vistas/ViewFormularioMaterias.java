@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp7.grupo6.vistas;
+package vistas;
 
+
+import tp7.grupo6.Colegio;
 import tp7.grupo6.Materia;
-
+import static vistas.Menu.materias;
 /**
  *
  * @author solmedina
@@ -174,7 +176,7 @@ public class ViewFormularioMaterias extends javax.swing.JInternalFrame {
         String nombre = jtfNombre.getText();
         int anio = Integer.parseInt(jtfAnio.getText());
         Materia mat = new Materia(idMateria,nombre,anio);
-        //boolean agregar = 
+        materias.put(idMateria, mat);
     }//GEN-LAST:event_jbtnGuardarActionPerformed
 
 

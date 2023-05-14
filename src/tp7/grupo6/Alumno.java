@@ -9,7 +9,7 @@ public class Alumno {
     private int legajo;
     private String apellido;
     private String nombre;
-    HashSet <Materia> materias;
+    HashSet <Materia> materia;
 
     public Alumno(int legajo, String apellido, String nombre) {
         this.legajo = legajo;
@@ -44,7 +44,7 @@ public class Alumno {
     
     public void agregarMateria(Materia m){
         
-        if(materias.add(m)){
+        if(materia.add(m)){
             System.out.println("Inscripcion correcta.");
         }else {
             System.out.println("Usted ya se encuentra inscripto en la materia.");
@@ -53,7 +53,7 @@ public class Alumno {
     }
     public int cantidadMaterias(){
         
-        return materias.size();
+        return materia.size();
     }
     
 }

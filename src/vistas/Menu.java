@@ -3,16 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp7.grupo6.vistas;
+package vistas;
 
-import tp7.grupo6.Alumno;
-
+import java.util.HashMap;
+import java.util.Map;
+import tp7.grupo6.*;
 /**
  *
  * @author solmedina
  */
 public class Menu extends javax.swing.JFrame {
 //public static Alumno alumno=new Alumno();
+    public static Map<Integer,Alumno>alumnos=new HashMap();
+    public static Map<Integer,Materia>materias=new HashMap();
+    
+    
+    //para los combo box
+    public static Map<Integer,Alumno>alumnos2=new HashMap();
+    public static Map<Integer,Materia>materias2=new HashMap();
     /**
      * Creates new form Menu
      */
@@ -86,7 +94,7 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItemAltaMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaMateriasActionPerformed
         //Formulario Materias
         escritorio.removeAll();//removemos todo
