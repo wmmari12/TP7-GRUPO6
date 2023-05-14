@@ -60,6 +60,11 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
         jbtmSalir.setBackground(java.awt.Color.darkGray);
         jbtmSalir.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jbtmSalir.setText("Salir");
+        jbtmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtmSalirActionPerformed(evt);
+            }
+        });
 
         jlLegajo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jlLegajo.setText("Legajo:");
@@ -158,6 +163,12 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
     private void jbtmGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmGuardarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtmGuardarActionPerformed
+
+    private void jbtmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmSalirActionPerformed
+        // SALIR DE LA VENTANA
+        
+        dispose();
+    }//GEN-LAST:event_jbtmSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
