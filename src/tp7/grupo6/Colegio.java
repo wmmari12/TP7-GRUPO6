@@ -18,6 +18,7 @@ public class Colegio {
         alumno.agregarMateria(materia);
         System.out.println(alumno.cantidadMaterias());
         
+        
     }
     
 }
