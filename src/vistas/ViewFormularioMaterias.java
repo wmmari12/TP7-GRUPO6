@@ -71,10 +71,10 @@ public class ViewFormularioMaterias extends javax.swing.JInternalFrame {
         jlCodigoDeMateria.setText("Codigo de Materia :");
 
         jlNombreAlQuePertenece.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlNombreAlQuePertenece.setText("Nombre :");
+        jlNombreAlQuePertenece.setText("Nombre de la materia:");
 
         jlAño.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jlAño.setText("Año :");
+        jlAño.setText("Año al que pertenece :");
 
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class ViewFormularioMaterias extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jlFormularioMaterias, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jDesktopPane3Layout.setVerticalGroup(
             jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

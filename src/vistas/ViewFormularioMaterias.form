@@ -85,7 +85,7 @@
                       </Group>
                       <Component id="jlFormularioMaterias" alignment="0" pref="317" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="129" max="32767" attributes="0"/>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -155,7 +155,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre :"/>
+            <Property name="text" type="java.lang.String" value="Nombre de la materia:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlA&#xf1;o">
@@ -163,7 +163,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="A&#xf1;o :"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o al que pertenece :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnGuardar">

@@ -141,6 +141,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtmGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="JbtmNuevo">
           <Properties>
@@ -163,6 +166,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtmSalirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlLegajo">
           <Properties>
