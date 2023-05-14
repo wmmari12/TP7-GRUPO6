@@ -19,7 +19,7 @@ public class Alumno {
         this.legajo = legajo;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.materias=new HashSet();
+        this.materia=new HashSet();
     }
     
     public int getLegajo() {
