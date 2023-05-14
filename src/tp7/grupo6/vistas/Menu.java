@@ -12,7 +12,7 @@ import tp7.grupo6.Alumno;
  * @author solmedina
  */
 public class Menu extends javax.swing.JFrame {
-public static Alumno alumno=new Alumno();
+//public static Alumno alumno=new Alumno();
     /**
      * Creates new form Menu
      */
@@ -77,11 +77,11 @@ public static Alumno alumno=new Alumno();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
         );
 
         pack();
