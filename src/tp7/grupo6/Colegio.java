@@ -32,6 +32,7 @@ public class Colegio {
         System.out.println("La cantidad de materia del alumno "+alumno1.getApellido()+" son: "+alumno1.cantidadMaterias());
         System.out.println("La cantidad de materia del alumno "+alumno2.getApellido()+" son: "+alumno2.cantidadMaterias());
         
+        
     }
     
 }
