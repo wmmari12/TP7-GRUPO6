@@ -10,10 +10,8 @@ import tp7.grupo6.Colegio;
 import tp7.grupo6.Materia;
 import static vistas.Menu.materias;
 import static vistas.Menu.alumnos;
-/**
- *
- * @author solmedina
- */
+
+
 public class ViewFormularioMaterias extends javax.swing.JInternalFrame {
 
     /**

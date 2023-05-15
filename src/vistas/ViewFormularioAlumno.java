@@ -5,10 +5,10 @@
  */
 package vistas;
 
-/**
- *
- * @author solmedina
- */
+import javax.swing.JOptionPane;
+import tp7.grupo6.Alumno;
+
+
 public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
 
     /**
@@ -162,6 +162,24 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jbtmGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmGuardarActionPerformed
         // TODO add your handling code here:
+        
+        int legajo=Integer.parseInt(jtfLegajo.getText());
+        String apellido=jtfApellido.getText();
+        String nombre=jtfNombre.getText();
+        Alumno alumno= new Alumno(legajo,apellido,nombre);
+       
+        Menu.alumnos.put(legajo, alumno);
+        if (!Menu.alumnos.containsKey(legajo))
+            {
+                JOptionPane.showMessageDialog(this, "Alumno agregado con exito");
+                limpiar();
+            } else
+            {
+                JOptionPane.showMessageDialog(this, "El alumno ya se encuentra agregado");
+
+            }
+        
+        
     }//GEN-LAST:event_jbtmGuardarActionPerformed
 
     private void jbtmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmSalirActionPerformed
@@ -169,7 +187,12 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
         
         dispose();
     }//GEN-LAST:event_jbtmSalirActionPerformed
-
+    public void limpiar() {
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jtfLegajo.setText("");
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JbtmNuevo;

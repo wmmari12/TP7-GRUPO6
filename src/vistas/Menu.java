@@ -8,10 +8,8 @@ package vistas;
 import java.util.HashMap;
 import java.util.Map;
 import tp7.grupo6.*;
-/**
- *
- * @author solmedina
- */
+
+
 public class Menu extends javax.swing.JFrame {
 //public static Alumno alumno=new Alumno();
     public static Map<Integer,Alumno>alumnos=new HashMap();
@@ -43,10 +41,13 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemAltaAlumno = new javax.swing.JMenuItem();
         jMenuItemFormulario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItemSalir = new javax.swing.JMenuItem();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        escritorio.setLayout(null);
 
         jMenu1.setText("Menu principal");
 
@@ -77,6 +78,20 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Salir");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItemSalir.setText("Salir del sistema");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemSalir);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -124,6 +139,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vfi);//agregarla al escritorio
         escritorio.moveToFront(vfi);//llevarla al frente
     }//GEN-LAST:event_jMenuItemFormularioActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        // salir del sistema
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,5 +201,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAltaAlumno;
     private javax.swing.JMenuItem jMenuItemAltaMaterias;
     private javax.swing.JMenuItem jMenuItemFormulario;
+    private javax.swing.JMenuItem jMenuItemSalir;
     // End of variables declaration//GEN-END:variables
 }

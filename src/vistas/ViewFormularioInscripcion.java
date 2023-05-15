@@ -7,10 +7,7 @@ package vistas;
 
 import static vistas.Menu.alumnos2;
 import static vistas.Menu.materias2;
-/**
- *
- * @author solmedina
- */
+
 public class ViewFormularioInscripcion extends javax.swing.JInternalFrame {
 
     /**
