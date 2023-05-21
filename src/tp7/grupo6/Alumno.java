@@ -1,33 +1,55 @@
 
 package tp7.grupo6;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 
 
 public class Alumno {
     
-    private int legajo;
+    private int idAlummno;
+    private String dni;
     private String apellido;
     private String nombre;
-    private HashSet <Materia> materia;
+    private LocalDate fechaNacimiento;
+    private boolean estado;
+    
+    //los 3 constructores vacios con id y sin id, y vacio
 
     public Alumno() {
     }
 
-    
-    public Alumno(int legajo, String apellido, String nombre) {
-        this.legajo = legajo;
+    public Alumno(String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.materia=new HashSet();
-    }
-    
-    public int getLegajo() {
-        return legajo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
     }
 
-    public void setLegajo(int legajo) {
-        this.legajo = legajo;
+    public Alumno(int id_alummno, String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.idAlummno = id_alummno;
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
+    }
+
+    public int getId_alummno() {
+        return idAlummno;
+    }
+
+    public void setId_alummno(int id_alummno) {
+        this.idAlummno = id_alummno;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getApellido() {
@@ -45,23 +67,29 @@ public class Alumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    public void agregarMateria (Materia m){
-        
-        if (materia.add(m)){
-            System.out.println(apellido+": Inscripcion correcta a la materia: "+m.getNombre());
-            System.out.println(" ");
-        }else {
-            System.out.println(apellido+" Usted ya se encuentra inscripto en la materia: "+m.getNombre());    
-            System.out.println(" ");
-        }
-        
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
-    public int cantidadMaterias(){
-        
-        return materia.size();
+    
+    //sobreescribir tostring, losmismo en inscripcion y alumno
+
+    @Override
+    public String toString() {
+        return  dni + " " + apellido + " " + nombre + " ";
     }
     
 }
