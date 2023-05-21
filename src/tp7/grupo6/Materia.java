@@ -4,39 +4,25 @@ package tp7.grupo6;
 
 public class Materia {
     
-    private int idMateria;
     private String nombre;
     private int anio;
-    
-    
-    public Materia(int idMateria, String nombre, int anio) {
-        this.idMateria = idMateria;
+    private int id_materia;
+    private boolean estado;
+
+    public Materia() {
+    }
+
+    public Materia(String nombre, int anio, int id_materia, boolean estado) {
         this.nombre = nombre;
         this.anio = anio;
+        this.id_materia = id_materia;
+        this.estado = estado;
     }
 
-    public int getIdMateria() {
-        return idMateria;
-    }
-
-    public void setIdMateria(int idMateria) {
-        this.idMateria = idMateria;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
+    public Materia(String nombre, int anio, boolean estado) {
         this.nombre = nombre;
-    }
-
-    public int getAnio() {
-        return anio;
-    }
-
-    public void setAnio(int anio) {
         this.anio = anio;
+        this.estado = estado;
     }
     
     

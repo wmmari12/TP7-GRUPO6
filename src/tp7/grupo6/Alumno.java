@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class Alumno {
     
-    private int idAlummno;
+    private int idAlumno;
     private String dni;
     private String apellido;
     private String nombre;
@@ -27,8 +27,8 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(int id_alummno, String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
-        this.idAlummno = id_alummno;
+    public Alumno(int id_alumno, String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.idAlumno = id_alumno;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -36,12 +36,12 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public int getId_alummno() {
-        return idAlummno;
+    public int getIdAlumno() {
+            return idAlumno;
     }
 
-    public void setId_alummno(int id_alummno) {
-        this.idAlummno = id_alummno;
+    public void setIdAlumno(int id_alummno) {
+        this.idAlumno = id_alummno;
     }
 
     public String getDni() {
