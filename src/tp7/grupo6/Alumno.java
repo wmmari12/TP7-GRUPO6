@@ -3,23 +3,25 @@ package tp7.grupo6;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 
 public class Alumno {
     
     private int idAlumno;
-    private String dni;
+    private int dni;
     private String apellido;
     private String nombre;
     private LocalDate fechaNacimiento;
     private boolean estado;
     
-    //los 3 constructores vacios con id y sin id, y vacio
+    //los 3 constructores vacios, con id y sin id
 
     public Alumno() {
     }
 
-    public Alumno(String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.idAlumno = idAlumno;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -27,15 +29,14 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(int id_alumno, String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
-        this.idAlumno = id_alumno;
+    public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
     }
-
+    
     public int getIdAlumno() {
             return idAlumno;
     }
@@ -44,11 +45,11 @@ public class Alumno {
         this.idAlumno = id_alummno;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -85,7 +86,7 @@ public class Alumno {
     }
     
     
-    //sobreescribir tostring, losmismo en inscripcion y alumno
+    //sobreescribir tostring, losmismo en inscripcion y materia
 
     @Override
     public String toString() {

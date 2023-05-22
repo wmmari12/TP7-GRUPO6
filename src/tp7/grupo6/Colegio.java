@@ -4,6 +4,7 @@
  */
 package tp7.grupo6;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Colegio {
@@ -12,7 +13,7 @@ public class Colegio {
     public static void main(String[] args) {
         
         //String dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado
-        //Alumno alumno= new Alumno("33888469","Flores","Mariana","1989-06-12",1);
+        //Alumno alumno= new Alumno("33888469","Flores","Mariana",1);
          
 
 //        HashSet <Materia> materia= new HashSet<>();

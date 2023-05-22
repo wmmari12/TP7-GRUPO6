@@ -163,21 +163,21 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
     private void jbtmGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtmGuardarActionPerformed
         // TODO add your handling code here:
         
-        int legajo=Integer.parseInt(jtfLegajo.getText());
-        String apellido=jtfApellido.getText();
-        String nombre=jtfNombre.getText();
-        Alumno alumno= new Alumno(legajo,apellido,nombre);
-       
-        Menu.alumnos.put(legajo, alumno);
-        if (!Menu.alumnos.containsKey(legajo))
-            {
-                JOptionPane.showMessageDialog(this, "Alumno agregado con exito");
-                limpiar();
-            } else
-            {
-                JOptionPane.showMessageDialog(this, "El alumno ya se encuentra agregado");
-
-            }
+//        int legajo=Integer.parseInt(jtfLegajo.getText());
+//        String apellido=jtfApellido.getText();
+//        String nombre=jtfNombre.getText();
+//        Alumno alumno= new Alumno(legajo,apellido,nombre);
+//       
+//        Menu.alumnos.put(legajo, alumno);
+//        if (!Menu.alumnos.containsKey(legajo))
+//            {
+//                JOptionPane.showMessageDialog(this, "Alumno agregado con exito");
+//                limpiar();
+//            } else
+//            {
+//                JOptionPane.showMessageDialog(this, "El alumno ya se encuentra agregado");
+//
+//            }
         
         
     }//GEN-LAST:event_jbtmGuardarActionPerformed

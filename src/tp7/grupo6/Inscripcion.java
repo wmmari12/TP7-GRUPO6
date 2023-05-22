@@ -10,7 +10,7 @@ package tp7.grupo6;
  * @author solmedina
  */
 public class Inscripcion {
-    private int id_inscripcion;
+    private int idInscripcion;
     private double nota;
     private Alumno alumno;
     private Materia materia;
@@ -25,11 +25,12 @@ public class Inscripcion {
         this.materia = materia;
     }
 
-    public Inscripcion(int id_inscripcion, double nota, Alumno alumno, Materia materia) {
-        this.id_inscripcion = id_inscripcion;
+    public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia materia) {
+        this.idInscripcion = idInscripcion;
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
+    
     
 }

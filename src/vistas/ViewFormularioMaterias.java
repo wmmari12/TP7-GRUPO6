@@ -170,12 +170,12 @@ public class ViewFormularioMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfIdMateriaActionPerformed
 
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
-        //Boton Guardar
-        int idMateria = Integer.parseInt(jtfIdMateria.getText());
-        String nombre = jtfNombre.getText();
-        int anio = Integer.parseInt(jtfAnio.getText());
-        Materia mat = new Materia(idMateria,nombre,anio);
-        materias.put(idMateria, mat);
+//        //Boton Guardar
+//        int idMateria = Integer.parseInt(jtfIdMateria.getText());
+//        String nombre = jtfNombre.getText();
+//        int anio = Integer.parseInt(jtfAnio.getText());
+//        Materia mat = new Materia(idMateria,nombre,anio);
+//        materias.put(idMateria, mat);
     }//GEN-LAST:event_jbtnGuardarActionPerformed
 
 
