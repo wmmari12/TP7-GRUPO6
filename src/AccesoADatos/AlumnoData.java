@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AlumnoData {
@@ -101,5 +103,67 @@ public class AlumnoData {
     return alumno;
 
 }
-
+    
+    public List <Alumno> listarAlumno(){
+        List <Alumno> alumnos =new ArrayList<>();
+        
+        try{
+            String sql= "SELECT * from almno WHERE estado=1";
+            PreparedStatement ps= con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                Alumno alumno = new Alumno();//creamos un alumno y seteamos sus valores con los obtenidos de la BD
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("estado"));
+                alumnos.add(alumno);
+            }
+            con.close();
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+        }
+        
+        
+        
+        
+        return alumnos;
+    }
+    
+    public void eliminarAlumno(int id){
+        
+        try{
+            String sql="UPDATE alumno SET estado=0 WHERE idAlumno=?";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila=ps.executeUpdate();
+            ps.close(); 
+            if(fila==1){
+                 JOptionPane.showMessageDialog(null, "El alumno ha sido borrado.");
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+    }
+    
+    public void activarAlumno(int id){
+        
+        try{
+            String sql="UPDATE alumno SET estado=1 WHERE idAlumno=?";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila=ps.executeUpdate();
+            ps.close(); 
+            if(fila==1){
+                 JOptionPane.showMessageDialog(null, "El alumno ha sido activado.");
+            }
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        
+    }
 }
