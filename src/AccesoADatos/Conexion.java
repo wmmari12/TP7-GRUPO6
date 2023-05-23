@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 
 public class Conexion {
-//    private static final String url = "jdbc:mysql://localhost:3306/unniversidadg6";
-// 
-//    private static final String usuario = "usuario1";
-//    private static String password = " ";
+    private static final String url = "jdbc:mysql://localhost:3306/universidadg6";
+ 
+    private static final String usuario = "usuario1";
+    private static String contraseña = "";
 
     private static Connection connection;
 
@@ -29,9 +29,9 @@ public class Conexion {
             try
             {
             Class.forName("org.mariadb.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/universidadg6";
-            String usuario = "usuario1";
-            String contraseña = "";
+//            String url = "jdbc:mysql://localhost:3306/universidadg6";
+//            String usuario = "usuario1";
+//            String contraseña = "";
 
             //Connection connection = DriverManager.getConnection(url, usuario, contraseña);
                 //equivale a un new de driver
@@ -41,7 +41,7 @@ public class Conexion {
 
             } catch (SQLException ex)
             {
-                JOptionPane.showMessageDialog(null, "Error al conectarse a la bd" + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al conectarse a la bd--" + ex.getMessage());
             } catch (ClassNotFoundException ex)
             {
                 Logger.getLogger(null, "Error al cargar los drivers");
