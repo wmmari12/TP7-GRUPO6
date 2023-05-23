@@ -29,12 +29,6 @@ public class Conexion {
             try
             {
             Class.forName("org.mariadb.jdbc.Driver");
-//            String url = "jdbc:mysql://localhost:3306/universidadg6";
-//            String usuario = "usuario1";
-//            String contraseña = "";
-
-            //Connection connection = DriverManager.getConnection(url, usuario, contraseña);
-                //equivale a un new de driver
 
              connection = DriverManager.getConnection(url,usuario,contraseña);
                 System.out.println("conexion existosa");

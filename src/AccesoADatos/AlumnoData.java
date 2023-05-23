@@ -23,7 +23,7 @@ public class AlumnoData {
     }
 
     public void guardarAlumno(Alumno alumno) {
-        System.out.println(alumno.getApellido());
+        
         String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
         try
         {
@@ -33,9 +33,9 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));//localDate a Date
             ps.setBoolean(5, alumno.isEstado()); // if reducido
-            ps.executeUpdate();
+            ps.executeUpdate();      
             ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next())
+            if (rs.next())  
             {
                 alumno.setIdAlumno(rs.getInt(1));//probar
                 JOptionPane.showMessageDialog(null, "Alumno añadido con exito.");
@@ -139,7 +139,7 @@ public class AlumnoData {
         List <Alumno> alumnos =new ArrayList<>();
         
         try{
-            String sql= "SELECT * from almno WHERE estado=1";
+            String sql= "SELECT * from alumno WHERE estado=1";
             PreparedStatement ps= con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
@@ -155,9 +155,6 @@ public class AlumnoData {
         }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
         }
-        
-        
-        
         
         return alumnos;
     }

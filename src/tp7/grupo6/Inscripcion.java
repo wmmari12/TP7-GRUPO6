@@ -5,10 +5,7 @@
  */
 package tp7.grupo6;
 
-/**
- *
- * @author solmedina
- */
+
 public class Inscripcion {
     private int idInscripcion;
     private double nota;

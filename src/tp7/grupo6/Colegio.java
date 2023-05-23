@@ -5,6 +5,8 @@
 package tp7.grupo6;
 
 import AccesoADatos.AlumnoData;
+import AccesoADatos.InscripcionData;
+import AccesoADatos.MateriaData;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.HashSet;
@@ -15,12 +17,21 @@ public class Colegio {
     public static void main(String[] args) {
         
         //public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado)
-        Alumno alumno=new Alumno(33888469,"Flores", "Mariana",LocalDate.of(1989, 06, 12),true);
-        AlumnoData alumnoData=new AlumnoData();
+       Alumno alumno=new Alumno(33888469,"Flores", "Mariana",LocalDate.of(1989, 06, 12),true);
+//        AlumnoData alumnoData=new AlumnoData();
+//        
+//        alumnoData.guardarAlumno(alumno);
         
-        alumnoData.guardarAlumno(alumno);
-         
-
+        //String nombre, int anio, boolean estado
+        Materia materia=new Materia(6,"Web 3",3,true);
+        MateriaData materiaData=new MateriaData();
+        //materiaData.guardarMateria(materia);
+//        System.out.println(materiaData.listarMaterias());
+        Inscripcion inscripcion=new Inscripcion(0.0,alumno,materia);
+        InscripcionData insc=new InscripcionData();
+        insc.guardarInscripcion(inscripcion);
+        
+ 
 //        HashSet <Materia> materia= new HashSet<>();
 //        Materia materia1 = new Materia(1, "Ingles I", 1);
 //        Materia materia2 = new Materia(2, "Matemáticas", 1);

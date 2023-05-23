@@ -57,9 +57,11 @@ public class Materia {
         this.estado = estado;
     }
 
-    public int getIdMateria(String idMateria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String toString() {
+        return "Materia: " + idMateria + ", " + nombre + ", " + anio + ", " + estado;
     }
+    
     
     
     
