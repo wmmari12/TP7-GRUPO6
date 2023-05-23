@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 
 public class Conexion {
-    private static final String url = "jdbc:mysql://localhost:3306/unniversidadg6";
- 
-    private static final String usuario = "usuario1";
-    private static String password = " ";
+//    private static final String url = "jdbc:mysql://localhost:3306/unniversidadg6";
+// 
+//    private static final String usuario = "usuario1";
+//    private static String password = " ";
 
     private static Connection connection;
 
@@ -28,9 +28,16 @@ public class Conexion {
 
             try
             {
-                Class.forName("org.mariadb.jdbc.Driver");//equivale a un new de driver
+            Class.forName("org.mariadb.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/universidadg6";
+            String usuario = "usuario1";
+            String contraseña = "";
 
-                connection = DriverManager.getConnection(url,usuario,password);
+            //Connection connection = DriverManager.getConnection(url, usuario, contraseña);
+                //equivale a un new de driver
+
+             connection = DriverManager.getConnection(url,usuario,contraseña);
+                System.out.println("conexion existosa");
 
             } catch (SQLException ex)
             {

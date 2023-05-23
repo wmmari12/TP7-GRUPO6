@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 public class AlumnoData {
 
-    private Connection con = null;
+    private Connection con = null;//atributo
 
     public AlumnoData() {
 
@@ -23,7 +23,7 @@ public class AlumnoData {
     }
 
     public void guardarAlumno(Alumno alumno) {
-
+        System.out.println(alumno.getApellido());
         String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
         try
         {
@@ -37,7 +37,7 @@ public class AlumnoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next())
             {
-                alumno.setIdAlumno(rs.getInt(1));
+                alumno.setIdAlumno(rs.getInt(1));//probar
                 JOptionPane.showMessageDialog(null, "Alumno añadido con exito.");
             } else
             {
@@ -67,6 +67,37 @@ public class AlumnoData {
             {//se posiciona en la primer fila de la busqueda
                 alumno.setIdAlumno(id);
                 alumno.setDni(rs.getInt("dni"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setEstado(rs.getBoolean("estado"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+            } else
+            {
+                JOptionPane.showMessageDialog(null, "No existe el alumno");
+            }
+            ps.close();//cerramos la conexion
+        } catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
+        }
+        return alumno;
+    }
+    
+    public Alumno buscarAlumnoPorDni(int dni){
+        
+        Alumno alumno = new Alumno();
+        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado = 1";//creamos la consulta a enviar
+        PreparedStatement ps = null;
+        try
+        {
+            ps = con.prepareStatement(sql);//envia la sentencia sql a la base de datos
+            ps.setInt(1, dni);//1 es el primer atributo que buscamos con where y id es el valor a buscar
+            ResultSet rs = ps.executeQuery();//guardamos el resultado obtenido de la base de datos
+
+            if (rs.next())
+            {//se posiciona en la primer fila de la busqueda
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(rs.getInt(dni));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setEstado(rs.getBoolean("estado"));
