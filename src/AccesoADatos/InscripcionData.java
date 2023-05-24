@@ -26,24 +26,26 @@ public class InscripcionData {
     public void guardarInscripcion(Inscripcion insc) {
         //double nota, Alumno alumno, Materia materia
         String sql = "INSERT INTO `inscripcion`(`nota`, `idAlumno`, `idMateria`) VALUES (?,?,?)";
-
+        PreparedStatement ps = null;
         try
         {
-            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps = con.prepareStatement(sql);
             ps.setDouble(1, insc.getNota());
             ps.setInt(2, insc.getAlumno().getIdAlumno());
             ps.setInt(3, insc.getMateria().getIdMateria());
-            int filas=ps.executeUpdate();
-//            int filas = ps.getGeneratedKeys();
+            ps.executeUpdate();
+            ResultSet rs=ps.getGeneratedKeys();
             System.out.println("inscripcion existosa");
-            if (filas==1)
+            if (rs.next())
             {
-                //insc.setIdInscripcion(rs.getInt());//probar
+                insc.setIdInscripcion(1);//probar
                 JOptionPane.showMessageDialog(null, "Inscripcion exitosa");
             } else
             {
                 JOptionPane.showMessageDialog(null, "El alumno no fue inscripto.");
             }
+            con.close();
             
             
         } catch (SQLException ex)

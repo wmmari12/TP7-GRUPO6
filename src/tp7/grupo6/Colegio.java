@@ -17,17 +17,18 @@ public class Colegio {
     public static void main(String[] args) {
         
         //public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado)
-       Alumno alumno=new Alumno(33888469,"Flores", "Mariana",LocalDate.of(1989, 06, 12),true);
-//        AlumnoData alumnoData=new AlumnoData();
-//        
-//        alumnoData.guardarAlumno(alumno);
+       //Alumno alumno=new Alumno(33888469,"Flores", "Mariana",LocalDate.of(1989, 06, 12),true);
+        AlumnoData alumnoData=new AlumnoData();
+      
+        Alumno alumno=alumnoData.buscarAlumno(3);
         
         //String nombre, int anio, boolean estado
-        Materia materia=new Materia(6,"Web 3",3,true);
+        //Materia materia=new Materia("Web 3",3,true);
         MateriaData materiaData=new MateriaData();
-        //materiaData.guardarMateria(materia);
+        Materia materia = materiaData.buscarMateria(6);
 //        System.out.println(materiaData.listarMaterias());
         Inscripcion inscripcion=new Inscripcion(0.0,alumno,materia);
+        
         InscripcionData insc=new InscripcionData();
         insc.guardarInscripcion(inscripcion);
         

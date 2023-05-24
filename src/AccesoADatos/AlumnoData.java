@@ -44,7 +44,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "El alumno no fue añadido.");
             }
 
-            ps.close();
+            con.close();
 
         } catch (SQLException ex)
         {
@@ -75,7 +75,7 @@ public class AlumnoData {
             {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
             }
-            ps.close();//cerramos la conexion
+           ps.close();//cerramos la conexion
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
