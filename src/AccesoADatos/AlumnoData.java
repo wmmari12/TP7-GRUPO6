@@ -139,7 +139,7 @@ public class AlumnoData {
         List <Alumno> alumnos =new ArrayList<>();
         
         try{
-            String sql= "SELECT * from alumno WHERE estado=1";
+            String sql= "SELECT * FROM alumno WHERE estado=1";
             PreparedStatement ps= con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             while (rs.next()){

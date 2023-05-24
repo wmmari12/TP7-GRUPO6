@@ -60,6 +60,11 @@ public class Inscripcion {
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
+
+    @Override
+    public String toString() {
+        return "Inscripcion: "+ idInscripcion + ", " + nota + ", " + alumno + ", " + materia;
+    }
     
     
     
