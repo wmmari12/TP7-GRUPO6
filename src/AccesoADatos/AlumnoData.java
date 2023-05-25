@@ -55,7 +55,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumno(int id) {
         Alumno alumno = null;
-        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno=? AND estado = 1";//creamos la consulta a enviar
+        String sql = "SELECT dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE idAlumno=? AND estado = 1";//creamos la consulta a enviar
         PreparedStatement ps = null;
         try
         {
@@ -76,7 +76,7 @@ public class AlumnoData {
             {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");
             }
-           ps.close();//cerramos la conexion-1 con
+           ps.close();//cerramos la conexion
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno2: "+ex.getMessage());
@@ -87,7 +87,7 @@ public class AlumnoData {
     public Alumno buscarAlumnoPorDni(int dni){
         
         Alumno alumno=null;
-        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado = 1";//creamos la consulta a enviar
+        String sql = "SELECT idAlumno,dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE dni=? AND estado = 1";//creamos la consulta a enviar
         PreparedStatement ps = null;
         try
         {
@@ -99,7 +99,7 @@ public class AlumnoData {
             {//se posiciona en la primer fila de la busqueda
                 alumno=new Alumno();
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt(dni));
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setEstado(rs.getBoolean("estado"));
@@ -111,7 +111,7 @@ public class AlumnoData {
             ps.close();//cerramos la conexion-2 con
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno3");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno3"+ex.getMessage());
         }
         return alumno;
     }

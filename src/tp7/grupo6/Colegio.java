@@ -17,20 +17,22 @@ public class Colegio {
     public static void main(String[] args) {
         
         //public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado)
-        //Alumno alumno=new Alumno(45,"Flores", "Mariana",LocalDate.of(1989, 06, 12),true);
+        //Alumno alumno=new Alumno(123,"Fernandez", "Lucas",LocalDate.of(1988, 02, 01),true);
         AlumnoData alumnoData=new AlumnoData();
-      
-        Alumno alumno=alumnoData.buscarAlumno(3);
-        System.out.println(alumno);
+        
+        Alumno alumno=alumnoData.buscarAlumnoPorDni(33888469);
+        
+        System.out.println(alumnoData.listarAlumno());
         //String nombre, int anio, boolean estado
         //Materia materia=new Materia("Web 3",3,true);
-        MateriaData materiaData=new MateriaData();
-        Materia materia = materiaData.buscarMateria(5);
-//        System.out.println(materiaData.listarMaterias());
-        //Inscripcion inscripcion=new Inscripcion(0.0,alumno,materia);
         
+//        MateriaData materiaData=new MateriaData();
+//        Materia materia = materiaData.buscarMateria(5);
+////        System.out.println(materiaData.listarMaterias());
+//        //Inscripcion inscripcion=new Inscripcion(0.0,alumno,materia);
+//        
         InscripcionData insc=new InscripcionData();
-        System.out.println(insc.obtenerInscripciones());
+        System.out.println(insc.obtenerAlumnosXMateria(6));
         
  
 //        HashSet <Materia> materia= new HashSet<>();
