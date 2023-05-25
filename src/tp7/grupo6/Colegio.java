@@ -30,7 +30,7 @@ public class Colegio {
         //Inscripcion inscripcion=new Inscripcion(0.0,alumno,materia);
         
         InscripcionData insc=new InscripcionData();
-        insc.actualizarNota(3, 5, 7.0);
+        System.out.println(insc.obtenerInscripciones());
         
  
 //        HashSet <Materia> materia= new HashSet<>();

@@ -26,30 +26,33 @@ public class MateriaData {
 
     public void guardarMateria(Materia materia) {
 
-        String sql = "INSERT INTO `materia`(`idMateria`, `nombre`, `año`, `estado`) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO `materia`(`nombre`, `año`, `estado`) VALUES (?,?,?)";
         try
         {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, materia.getIdMateria());
-            ps.setString(2, materia.getNombre());
-            ps.setInt(3, materia.getAnio());
-            ps.setBoolean(4, materia.isEstado());
+            
+            ps.setString(1, materia.getNombre());
+            ps.setInt(2, materia.getAnio());
+            ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next())
             {
-                //probar
+                materia.setIdMateria(rs.getInt(1));//probar
                 JOptionPane.showMessageDialog(null, "Materia cargada con exito");
+            }else{
+                JOptionPane.showMessageDialog(null, "Materia no pudo ser agregada");
             }
+            ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia" + ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia" + ex.getMessage());
         }
     }
 
     public Materia buscarMateria(int id) {
 
-        Materia materia = new Materia();
+        Materia materia=null;
         String sql = "SELECT `idMateria`, `nombre`, `año`, `estado` FROM `materia` WHERE idMateria=?";
         PreparedStatement ps = null;
 
@@ -58,8 +61,10 @@ public class MateriaData {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+            
             if (rs.next())
             {
+                materia= new Materia();
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
@@ -72,7 +77,7 @@ public class MateriaData {
             ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia "+ex.getMessage());
         }
         return materia;
     }
@@ -88,11 +93,13 @@ public class MateriaData {
             if (fila == 1)
             {
                 JOptionPane.showMessageDialog(null, "La materia ha sido eliminada");
+            }else{
+                JOptionPane.showMessageDialog(null, "La materia NO ha sido eliminada");
             }
-
+            ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia"+ex.getMessage());
         }
     }
 
@@ -103,6 +110,7 @@ public class MateriaData {
         try
         {
             ps = con.prepareStatement(sql);//envia la sentencia sql a la base de datos
+            
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
             ps.setBoolean(3, materia.isEstado());
@@ -115,7 +123,7 @@ public class MateriaData {
             }else{
                 System.out.println("No se encontro la materia");
             }
-            System.out.println("Materia modificada");
+            
             ps.close();//cerramos la conexion
         } catch (SQLException ex)
         {
@@ -125,6 +133,7 @@ public class MateriaData {
     }
 
     public List<Materia> listarMaterias() {
+        
         List<Materia> materias = new ArrayList<>();
         
         try{
