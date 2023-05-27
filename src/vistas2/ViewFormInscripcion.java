@@ -98,9 +98,6 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -121,7 +118,10 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
                                 .addGap(72, 72, 72)
                                 .addComponent(jButton2)
                                 .addGap(104, 104, 104)
-                                .addComponent(jButton3)))))
+                                .addComponent(jButton3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel3)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
