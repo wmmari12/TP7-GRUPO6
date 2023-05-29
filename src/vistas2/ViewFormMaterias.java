@@ -31,15 +31,15 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         jlCodigo = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
         jlAño = new javax.swing.JLabel();
-        ChBoxEstado = new javax.swing.JCheckBox();
+        jChBoxEstado = new javax.swing.JCheckBox();
         jtfCodigo = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfAño = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnBorrar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        jbtnBuscar = new javax.swing.JButton();
+        jbtnGuardar = new javax.swing.JButton();
+        jbtnBorrar = new javax.swing.JButton();
+        jbtnActualizar = new javax.swing.JButton();
+        jbtnLimpiar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("-MATERIAS-");
@@ -50,17 +50,17 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
 
         jlAño.setText("Año");
 
-        ChBoxEstado.setText("Estado");
+        jChBoxEstado.setText("Estado");
 
-        btnBuscar.setText("Buscar");
+        jbtnBuscar.setText("Buscar");
 
-        btnGuardar.setText("Guardar");
+        jbtnGuardar.setText("Guardar");
 
-        btnBorrar.setText("Borrar");
+        jbtnBorrar.setText("Borrar");
 
-        btnActualizar.setText("Actualizar");
+        jbtnActualizar.setText("Actualizar");
 
-        btnLimpiar.setText("Limpiar");
+        jbtnLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,23 +78,23 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
                                     .addComponent(jlAño))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ChBoxEstado))
+                                        .addComponent(jChBoxEstado))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnBuscar))
+                                        .addComponent(jbtnBuscar))
                                     .addComponent(jtfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
+                                .addComponent(jbtnGuardar)
                                 .addGap(26, 26, 26)
-                                .addComponent(btnBorrar)
+                                .addComponent(jbtnBorrar)
                                 .addGap(26, 26, 26)
-                                .addComponent(btnActualizar)
+                                .addComponent(jbtnActualizar)
                                 .addGap(28, 28, 28)
-                                .addComponent(btnLimpiar))))
+                                .addComponent(jbtnLimpiar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addComponent(jLabel1)))
@@ -109,7 +109,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCodigo)
                     .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
+                    .addComponent(jbtnBuscar))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre)
@@ -118,13 +118,13 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlAño)
                     .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChBoxEstado))
+                    .addComponent(jChBoxEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnBorrar)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnLimpiar))
+                    .addComponent(jbtnGuardar)
+                    .addComponent(jbtnBorrar)
+                    .addComponent(jbtnActualizar)
+                    .addComponent(jbtnLimpiar))
                 .addGap(14, 14, 14))
         );
 
@@ -133,13 +133,13 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox ChBoxEstado;
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JCheckBox jChBoxEstado;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbtnActualizar;
+    private javax.swing.JButton jbtnBorrar;
+    private javax.swing.JButton jbtnBuscar;
+    private javax.swing.JButton jbtnGuardar;
+    private javax.swing.JButton jbtnLimpiar;
     private javax.swing.JLabel jlAño;
     private javax.swing.JLabel jlCodigo;
     private javax.swing.JLabel jlNombre;

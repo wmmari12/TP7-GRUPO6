@@ -44,6 +44,12 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
         jlFormularioAlumno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlFormularioAlumno.setText("Formulario de Alumnos");
 
+        jtfLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfLegajoActionPerformed(evt);
+            }
+        });
+
         jbtmGuardar.setBackground(java.awt.Color.darkGray);
         jbtmGuardar.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         jbtmGuardar.setText("Guardar");
@@ -187,6 +193,10 @@ public class ViewFormularioAlumno extends javax.swing.JInternalFrame {
         
         dispose();
     }//GEN-LAST:event_jbtmSalirActionPerformed
+
+    private void jtfLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLegajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfLegajoActionPerformed
     public void limpiar() {
         jtfApellido.setText("");
         jtfNombre.setText("");

@@ -32,8 +32,8 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
         cBoxAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        jbtnGuardar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
 
         jlCargaNotasTit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlCargaNotasTit.setText("-CARGA DE NOTAS-");
@@ -64,9 +64,9 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnGuardar.setText("Guardar");
+        jbtnGuardar.setText("Guardar");
 
-        btnCancelar.setText("Cancelar");
+        jbtnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,9 +87,9 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(btnGuardar)
+                        .addComponent(jbtnGuardar)
                         .addGap(71, 71, 71)
-                        .addComponent(btnCancelar)))
+                        .addComponent(jbtnCancelar)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,8 +105,8 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
+                    .addComponent(jbtnGuardar)
+                    .addComponent(jbtnCancelar))
                 .addContainerGap(244, Short.MAX_VALUE))
         );
 
@@ -115,11 +115,11 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cBoxAlumno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnGuardar;
     private javax.swing.JLabel jlAlumno;
     private javax.swing.JLabel jlCargaNotasTit;
     // End of variables declaration//GEN-END:variables

@@ -38,8 +38,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbtnAnularInscripcion = new javax.swing.JButton();
+        jbtnSalir = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,9 +87,9 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
 
         jButton1.setText("jButton1");
 
-        jButton2.setText("Anular Inscripcion");
+        jbtnAnularInscripcion.setText("Anular Inscripcion");
 
-        jButton3.setText("Salir");
+        jbtnSalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,9 +116,9 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(72, 72, 72)
-                                .addComponent(jButton2)
+                                .addComponent(jbtnAnularInscripcion)
                                 .addGap(104, 104, 104)
-                                .addComponent(jButton3))))
+                                .addComponent(jbtnSalir))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jLabel3)))
@@ -144,8 +144,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jbtnAnularInscripcion)
+                    .addComponent(jbtnSalir))
                 .addGap(16, 16, 16))
         );
 
@@ -155,8 +155,6 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -167,5 +165,7 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton jbtnAnularInscripcion;
+    private javax.swing.JButton jbtnSalir;
     // End of variables declaration//GEN-END:variables
 }
