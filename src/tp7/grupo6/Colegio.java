@@ -8,9 +8,15 @@ import AccesoADatos.AlumnoData;
 import AccesoADatos.InscripcionData;
 import AccesoADatos.MateriaData;
 import java.time.LocalDate;
+import controlado.Controlador;
 import java.time.Month;
 import java.util.HashSet;
-
+import lavista.Menu;
+import vistas2.ViewFormAlumnos;
+import vistas2.ViewFormCargaDeNotas;
+import vistas2.ViewFormInscripcion;
+import vistas2.ViewFormListadoAlum_x_Materia;
+import vistas2.ViewFormMaterias;
 public class Colegio {
 
     
@@ -34,7 +40,29 @@ public class Colegio {
         InscripcionData insc=new InscripcionData();
         System.out.println(insc.obtenerAlumnosXMateria(6));
         
- 
+ ///////////////////////////////////////////////////////////
+
+         Alumno alu = new Alumno();
+        Inscripcion inscrip = new Inscripcion();
+        Materia mate = new Materia();
+        Menu mn = new Menu();
+        ViewFormAlumnos vfa = new ViewFormAlumnos();
+        ViewFormCargaDeNotas vfcn = new ViewFormCargaDeNotas();
+        ViewFormInscripcion vfi = new ViewFormInscripcion();
+        ViewFormListadoAlum_x_Materia vfaxm = new ViewFormListadoAlum_x_Materia();
+        ViewFormMaterias vfmate = new ViewFormMaterias();
+        Controlador control = new Controlador(mn, vfa, vfcn, vfi, vfaxm, vfmate, alumno, inscrip, materia);
+      
+        mn.setVisible(true);
+        vfa.setVisible(true);
+        vfcn.setVisible(true);
+        vfaxm.setVisible(true);
+        vfmate.setVisible(true);
+        vfi.setVisible(true);
+
+
+
+
 //        HashSet <Materia> materia= new HashSet<>();
 //        Materia materia1 = new Materia(1, "Ingles I", 1);
 //        Materia materia2 = new Materia(2, "Matemáticas", 1);
