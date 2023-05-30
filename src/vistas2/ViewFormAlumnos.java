@@ -322,59 +322,59 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
 
     private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
         // TODO add your handling code here:
-//        try
-//        {
-//            //Obtenemos los datos ingresados por el usuario
-//            int legajo=Integer.parseInt(jtfLegajo.getText());
-//            String nombre = jtfNombre.getText();
-//            String apellido = jtfApellido.getText();
-//            int dni = Integer.parseInt(jtfDni.getText());
-//            Boolean estado = jCheckBoxEstado.isSelected();
-//            //Obtenemos la fecha y la pasamos a LocalDate
-//            Date date = jdcFechaNac.getDate();
-//            LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-////          
-//            //Construye nuevo alumno y lo guarda en la BD
-//
-//            Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
-//            alumnoData.modificarAlumno(alumno);
-//
-////            jtfLegajo.setText(alumno.getIdAlumno() + "");
-////            jbtnBorrar.setEnabled(true);
-//
-//        } catch (Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
-//            jtfDni.requestFocus();
-//        }
-        
-        
-        
-        int id = -1;
-        try {
-            id = Integer.parseInt(jtfLegajo.getText());
-        } catch (Exception ex) {
+        try
+        {
+            //Obtenemos los datos ingresados por el usuario
+            int legajo=Integer.parseInt(jtfLegajo.getText());
+            String nombre = jtfNombre.getText();
+            String apellido = jtfApellido.getText();
+            int dni = Integer.parseInt(jtfDni.getText());
+            Boolean estado = jCheckBoxEstado.isSelected();
+            //Obtenemos la fecha y la pasamos a LocalDate
+            Date date = jdcFechaNac.getDate();
+            LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//          
+            //Construye nuevo alumno y lo guarda en la BD
 
-            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el id");
+            Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
+            alumnoData.modificarAlumno(alumno);
+
+            jtfLegajo.setText(alumno.getIdAlumno() + "");
+            jbtnBorrar.setEnabled(true);
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
             jtfLegajo.requestFocus();
         }
-        String nombre = jtfNombre.getText();
-        String apellido = jtfApellido.getText();
-        int dni = -1;
-        try {
-            dni = Integer.parseInt(jtfDni.getText());
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el dni");
-            jtfDni.requestFocus();
-
-        }
-        Date date = jdcFechaNac.getDate();
-        LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-        boolean estado = jCheckBoxEstado.isSelected();
-        Alumno alumno = new Alumno(dni, apellido, nombre, fecha, estado);
-        alumnoData.modificarAlumno(alumno);
+        
+//        
+//        
+//        int legajo = -1;
+//        try {
+//            legajo = Integer.parseInt(jtfLegajo.getText());
+//        } catch (Exception ex) {
+//
+//            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el id");
+//            jtfLegajo.requestFocus();
+//        }
+//        String nombre = jtfNombre.getText();
+//        String apellido = jtfApellido.getText();
+//        int dni = -1;
+//        try {
+//            dni = Integer.parseInt(jtfDni.getText());
+//        } catch (Exception e) {
+//
+//            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el dni");
+//            jtfDni.requestFocus();
+//
+//        }
+//        Date date = jdcFechaNac.getDate();
+//        LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//
+//        boolean estado = jCheckBoxEstado.isSelected();
+//        Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
+//        alumnoData.modificarAlumno(alumno);
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     private void jbtnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActivarActionPerformed

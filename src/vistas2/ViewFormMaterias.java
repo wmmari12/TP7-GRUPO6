@@ -36,7 +36,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         jChBoxEstado = new javax.swing.JCheckBox();
         jtfCodigo = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
-        jtfAño = new javax.swing.JTextField();
+        jtfAnio = new javax.swing.JTextField();
         jbtnBuscar = new javax.swing.JButton();
         jbtnGuardar = new javax.swing.JButton();
         jbtnBorrar = new javax.swing.JButton();
@@ -76,8 +76,18 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         });
 
         jbtnActualizar.setText("Actualizar");
+        jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnActualizarActionPerformed(evt);
+            }
+        });
 
         jbtnLimpiar.setText("Limpiar");
+        jbtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +106,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jChBoxEstado))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -134,7 +144,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlAño)
-                    .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jChBoxEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -153,7 +163,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         try {
             Materia materia=materiaData.buscarMateria(Integer.parseInt(jtfCodigo.getText()));
             jtfNombre.setText(materia.getNombre());
-            jtfAño.setText(materia.getAnio() + "");
+            jtfAnio.setText(materia.getAnio() + "");
             jbtnGuardar.setEnabled(false);
             jbtnActualizar.setEnabled(true);
             jbtnBorrar.setEnabled(true);
@@ -170,14 +180,14 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         {
             //Obtenemos los datos ingresados por el usuario
             String nombre = jtfNombre.getText();
-            int anio=Integer.parseInt(jtfAño.getText());
+            int anio=Integer.parseInt(jtfAnio.getText());
             Boolean estado = jChBoxEstado.isSelected();
 //          
             //Construye nueva materia y lo guarda en la BD
 
             Materia materia = new Materia(nombre,anio,estado);
             materiaData.guardarMateria(materia);
-
+            limpiar();
             jtfCodigo.setText(materia.getIdMateria()+ "");
             jbtnBorrar.setEnabled(true);
 
@@ -192,9 +202,47 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        
             materiaData.eliminarMateria(Integer.parseInt(jtfCodigo.getText()));
-          
+            limpiar();
     }//GEN-LAST:event_jbtnBorrarActionPerformed
 
+    private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
+        // Modificar materia
+        try
+        {
+            //Obtenemos los datos ingresados por el usuario
+            int codigo=Integer.parseInt(jtfCodigo.getText());
+            String nombre = jtfNombre.getText();
+            int anio = Integer.parseInt(jtfAnio.getText());
+            Boolean estado = jChBoxEstado.isSelected();
+            
+            //Construye una nueva materia y lo guarda en la BD
+
+            Materia materia = new Materia(codigo, nombre, anio, estado);
+            materiaData.modificarMateria(materia);
+            limpiar();
+            jtfCodigo.setText(materia.getIdMateria() + "");
+            jbtnBorrar.setEnabled(true);
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
+            jtfCodigo.requestFocus();
+        }
+        
+        
+    }//GEN-LAST:event_jbtnActualizarActionPerformed
+
+    private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
+        // limpiar campos:
+        limpiar();
+    }//GEN-LAST:event_jbtnLimpiarActionPerformed
+    
+    public void limpiar(){
+        jtfCodigo.setText("");
+        jtfNombre.setText("");
+        jChBoxEstado.setSelected(false);
+        jtfAnio.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jChBoxEstado;
@@ -207,7 +255,7 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlAño;
     private javax.swing.JLabel jlCodigo;
     private javax.swing.JLabel jlNombre;
-    private javax.swing.JTextField jtfAño;
+    private javax.swing.JTextField jtfAnio;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
