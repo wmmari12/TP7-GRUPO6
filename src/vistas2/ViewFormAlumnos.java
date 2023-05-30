@@ -260,8 +260,8 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
 
     private void jbtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBorrarActionPerformed
         // TODO add your handling code here:
-//        try
-//        {
+        try
+        {
             int id=Integer.parseInt(jtfLegajo.getText());
             Alumno alumno = new Alumno();
             alumno=alumnoData.buscarAlumno(id);
@@ -273,13 +273,14 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             jbtnActualizar.setEnabled(true);
             jbtnGuardar.setEnabled(false);
             alumnoData.eliminarAlumno(id);
-//            limpiar();
-//
-//        } catch (Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
-//            jtfDni.requestFocus();
-//        }
+            
+            limpiar();
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
+            jtfDni.requestFocus();
+        }
     }//GEN-LAST:event_jbtnBorrarActionPerformed
 
     private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
@@ -311,6 +312,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
            // jbtnLimpiar.setEnabled(true);
             jbtnActualizar.setEnabled(true);
             jbtnGuardar.setEnabled(false);
+            jCheckBoxEstado.setEnabled(false);
 
         } catch (Exception ex)
         {
@@ -338,7 +340,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
 
             Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
             alumnoData.modificarAlumno(alumno);
-
+            limpiar();
             jtfLegajo.setText(alumno.getIdAlumno() + "");
             jbtnBorrar.setEnabled(true);
 
@@ -347,34 +349,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
             jtfLegajo.requestFocus();
         }
-        
-//        
-//        
-//        int legajo = -1;
-//        try {
-//            legajo = Integer.parseInt(jtfLegajo.getText());
-//        } catch (Exception ex) {
-//
-//            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el id");
-//            jtfLegajo.requestFocus();
-//        }
-//        String nombre = jtfNombre.getText();
-//        String apellido = jtfApellido.getText();
-//        int dni = -1;
-//        try {
-//            dni = Integer.parseInt(jtfDni.getText());
-//        } catch (Exception e) {
-//
-//            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el dni");
-//            jtfDni.requestFocus();
-//
-//        }
-//        Date date = jdcFechaNac.getDate();
-//        LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//
-//        boolean estado = jCheckBoxEstado.isSelected();
-//        Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
-//        alumnoData.modificarAlumno(alumno);
+
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     private void jbtnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActivarActionPerformed
