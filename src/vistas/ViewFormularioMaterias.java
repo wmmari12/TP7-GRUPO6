@@ -6,7 +6,7 @@
 package vistas;
 
 
-import tp7.grupo6.Colegio;
+
 import tp7.grupo6.Materia;
 import static vistas.Menu.materias;
 import static vistas.Menu.alumnos;

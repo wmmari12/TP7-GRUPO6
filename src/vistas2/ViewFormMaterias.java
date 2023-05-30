@@ -5,17 +5,19 @@
  */
 package vistas2;
 
-/**
- *
- * @author Win10
- */
+import AccesoADatos.MateriaData;
+import javax.swing.JOptionPane;
+import tp7.grupo6.Materia;
+
 public class ViewFormMaterias extends javax.swing.JInternalFrame {
 
+    public MateriaData materiaData=null;
     /**
      * Creates new form ViewFormMaterias
      */
     public ViewFormMaterias() {
         initComponents();
+         materiaData=new MateriaData();
     }
 
     /**
@@ -53,10 +55,25 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
         jChBoxEstado.setText("Estado");
 
         jbtnBuscar.setText("Buscar");
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
 
         jbtnGuardar.setText("Guardar");
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
 
         jbtnBorrar.setText("Borrar");
+        jbtnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBorrarActionPerformed(evt);
+            }
+        });
 
         jbtnActualizar.setText("Actualizar");
 
@@ -130,6 +147,53 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        // TODO add your handling code here:
+        try {
+            Materia materia=materiaData.buscarMateria(Integer.parseInt(jtfCodigo.getText()));
+            jtfNombre.setText(materia.getNombre());
+            jtfAño.setText(materia.getAnio() + "");
+            jbtnGuardar.setEnabled(false);
+            jbtnActualizar.setEnabled(true);
+            jbtnBorrar.setEnabled(true);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "ERROR: Debe Ingresar un ID\n" + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            //Obtenemos los datos ingresados por el usuario
+            String nombre = jtfNombre.getText();
+            int anio=Integer.parseInt(jtfAño.getText());
+            Boolean estado = jChBoxEstado.isSelected();
+//          
+            //Construye nueva materia y lo guarda en la BD
+
+            Materia materia = new Materia(nombre,anio,estado);
+            materiaData.guardarMateria(materia);
+
+            jtfCodigo.setText(materia.getIdMateria()+ "");
+            jbtnBorrar.setEnabled(true);
+
+        } catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
+            jtfCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_jbtnGuardarActionPerformed
+
+    private void jbtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBorrarActionPerformed
+        // TODO add your handling code here:
+       
+            materiaData.eliminarMateria(Integer.parseInt(jtfCodigo.getText()));
+          
+    }//GEN-LAST:event_jbtnBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

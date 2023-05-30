@@ -55,7 +55,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumno(int id) {
         Alumno alumno = null;
-        String sql = "SELECT dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE idAlumno=? AND estado = 1";//creamos la consulta a enviar
+        String sql = "SELECT dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE idAlumno=?";//AND estado = 1  creamos la consulta a enviar
         PreparedStatement ps = null;
         try
         {
@@ -118,7 +118,7 @@ public class AlumnoData {
 
     public Alumno modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=? WHERE idAlumno=?";
+        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?, estado=? WHERE idAlumno=?";
         PreparedStatement ps = null;
         try
         {
@@ -127,16 +127,17 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
-            ps.setInt(5, alumno.getIdAlumno());
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getIdAlumno());
             int filas=ps.executeUpdate();
             if(filas==1){
                 JOptionPane.showMessageDialog(null, "Alumno modificado");
             }else{
-                JOptionPane.showMessageDialog(null, "No se encontro el alumno!");
+                JOptionPane.showMessageDialog(null, "No se encontro el alumno buscado!"+ps.toString());
             }
         ps.close();//cerramos la conexion
     }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno4");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
     }
     return alumno;
 

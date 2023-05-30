@@ -6,12 +6,8 @@
 package vistas2;
 
 import AccesoADatos.AlumnoData;
-import AccesoADatos.Conexion;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import tp7.grupo6.Alumno;
@@ -53,6 +49,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
         jdcFechaNac = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jtfDni = new javax.swing.JTextField();
+        jbtnActivar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("-ALUMNOS-");
@@ -123,6 +120,13 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jbtnActivar.setText("Activar");
+        jbtnActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnActivarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,22 +140,33 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlLegajo)
-                            .addComponent(jlApellido)
-                            .addComponent(jlNombre)
-                            .addComponent(jLabel3))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfApellido)
-                            .addComponent(jtfNombre)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfLegajo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtnBuscar))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlLegajo)
+                                    .addComponent(jlApellido)
+                                    .addComponent(jlNombre)
+                                    .addComponent(jLabel3))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfApellido)
+                                    .addComponent(jtfNombre)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfLegajo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbtnBuscar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfDni)
+                                        .addGap(1, 1, 1)))
+                                .addGap(14, 14, 14))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfDni)
-                                .addGap(1, 1, 1)))
-                        .addGap(14, 14, 14))
+                                .addComponent(jLabel2)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jCheckBoxEstado)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jdcFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(132, 132, 132))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbtnGuardar)
                         .addGap(18, 18, 18)
@@ -160,16 +175,9 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jbtnActualizar)
                         .addGap(18, 18, 18)
                         .addComponent(jbtnLimpiar)
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCheckBoxEstado)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jdcFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(132, 132, 132))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnActivar)
+                        .addGap(0, 61, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +214,8 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jbtnGuardar)
                     .addComponent(jbtnBorrar)
                     .addComponent(jbtnActualizar)
-                    .addComponent(jbtnLimpiar))
+                    .addComponent(jbtnLimpiar)
+                    .addComponent(jbtnActivar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -251,8 +260,8 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
 
     private void jbtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBorrarActionPerformed
         // TODO add your handling code here:
-        try
-        {
+//        try
+//        {
             int id=Integer.parseInt(jtfLegajo.getText());
             Alumno alumno = new Alumno();
             alumno=alumnoData.buscarAlumno(id);
@@ -264,13 +273,13 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             jbtnActualizar.setEnabled(true);
             jbtnGuardar.setEnabled(false);
             alumnoData.eliminarAlumno(id);
-            limpiar();
-
-        } catch (Exception ex)
-        {
-            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
-            jtfDni.requestFocus();
-        }
+//            limpiar();
+//
+//        } catch (Exception ex)
+//        {
+//            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
+//            jtfDni.requestFocus();
+//        }
     }//GEN-LAST:event_jbtnBorrarActionPerformed
 
     private void jbtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLimpiarActionPerformed
@@ -280,6 +289,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
         jtfNombre.setText("");
         jCheckBoxEstado.setSelected(false);
         jdcFechaNac.setDate(null);
+        jtfLegajo.setText("");
     }//GEN-LAST:event_jbtnLimpiarActionPerformed
 
     private void jtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfApellidoActionPerformed
@@ -297,10 +307,10 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             jtfNombre.setText(alumno.getNombre());
             jtfDni.setText(alumno.getDni()+"");
             jdcFechaNac.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
-            jbtnLimpiar.setEnabled(true);
+            jCheckBoxEstado.isSelected();
+           // jbtnLimpiar.setEnabled(true);
             jbtnActualizar.setEnabled(true);
             jbtnGuardar.setEnabled(false);
-            limpiar();
 
         } catch (Exception ex)
         {
@@ -312,12 +322,40 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
 
     private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
         // TODO add your handling code here:
+//        try
+//        {
+//            //Obtenemos los datos ingresados por el usuario
+//            int legajo=Integer.parseInt(jtfLegajo.getText());
+//            String nombre = jtfNombre.getText();
+//            String apellido = jtfApellido.getText();
+//            int dni = Integer.parseInt(jtfDni.getText());
+//            Boolean estado = jCheckBoxEstado.isSelected();
+//            //Obtenemos la fecha y la pasamos a LocalDate
+//            Date date = jdcFechaNac.getDate();
+//            LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+////          
+//            //Construye nuevo alumno y lo guarda en la BD
+//
+//            Alumno alumno = new Alumno(legajo, dni, apellido, nombre, fecha, estado);
+//            alumnoData.modificarAlumno(alumno);
+//
+////            jtfLegajo.setText(alumno.getIdAlumno() + "");
+////            jbtnBorrar.setEnabled(true);
+//
+//        } catch (Exception ex)
+//        {
+//            JOptionPane.showMessageDialog(null, "Datos invalidos, verifique su entrada " + ex.getMessage());
+//            jtfDni.requestFocus();
+//        }
+        
+        
+        
         int id = -1;
         try {
             id = Integer.parseInt(jtfLegajo.getText());
         } catch (Exception ex) {
 
-            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número");
+            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el id");
             jtfLegajo.requestFocus();
         }
         String nombre = jtfNombre.getText();
@@ -327,7 +365,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
             dni = Integer.parseInt(jtfDni.getText());
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número");
+            JOptionPane.showMessageDialog(this, "Usted debe ingresar un número para el dni");
             jtfDni.requestFocus();
 
         }
@@ -339,12 +377,27 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
         alumnoData.modificarAlumno(alumno);
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
+    private void jbtnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActivarActionPerformed
+        // TODO add your handling code here:
+            int id=Integer.parseInt(jtfLegajo.getText());
+            Alumno alumno = new Alumno();
+            alumno=alumnoData.buscarAlumno(id);
+            jtfApellido.setText(alumno.getApellido());
+            jtfNombre.setText(alumno.getNombre());
+            jtfDni.setText(alumno.getDni()+"");
+            jdcFechaNac.setDate(java.sql.Date.valueOf(alumno.getFechaNacimiento()));
+            jCheckBoxEstado.isSelected();
+            alumnoData.activarAlumno(id);
+        
+    }//GEN-LAST:event_jbtnActivarActionPerformed
+
     public void limpiar(){
         jtfDni.setText("");
         jtfApellido.setText("");
         jtfNombre.setText("");
         jCheckBoxEstado.setSelected(false);
         jdcFechaNac.setDate(null);
+        jtfLegajo.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -352,6 +405,7 @@ public class ViewFormAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtnActivar;
     private javax.swing.JButton jbtnActualizar;
     private javax.swing.JButton jbtnBorrar;
     private javax.swing.JButton jbtnBuscar;
