@@ -107,7 +107,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnGuardar)
                     .addComponent(jbtnCancelar))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();

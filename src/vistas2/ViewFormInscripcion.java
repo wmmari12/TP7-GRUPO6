@@ -16,12 +16,9 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     private ArrayList<Materia> listaMaterias;
     private ArrayList<Materia> listaNoMaterias;
     private ArrayList<Alumno> listaAlumnos;
-    
     private InscripcionData inscripcionData;
     private MateriaData materiaData;
     private AlumnoData alumnoData;
-    
-   
     private DefaultTableModel modelo;
     
     
@@ -36,6 +33,7 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         
         cargaAlumnos();
         armarTituloDeTabla();
+        
         
     }
 
@@ -135,27 +133,24 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbAlumnos.setSelectedIndex(-1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel2)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jrbInscriptas)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jrbNoInscriptas))
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(34, 34, 34)
-                                .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel1))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(107, 107, 107)
@@ -233,10 +228,33 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
 
     private void jbtnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnInscribirActionPerformed
         // TODO add your handling code here:
+        int filaSelec = jTable1.getSelectedRow();
+        if(filaSelec!= -1){
+            Alumno alumno = (Alumno)jcbAlumnos.getSelectedItem();
+            
+            int idMateria = (Integer)modelo.getValueAt(filaSelec, 0);
+            String nomMateria = (String)modelo.getValueAt(filaSelec, 1);
+            int anio = (Integer)modelo.getValueAt(filaSelec, 2);
+            Materia materia = new Materia(idMateria, nomMateria, anio,true);
+            
+            Inscripcion inscripcion = new Inscripcion(0,alumno,materia);
+            
+            inscripcionData.guardarInscripcion(inscripcion);
+            
+            borrarFilaTabla();
+        }
     }//GEN-LAST:event_jbtnInscribirActionPerformed
 
     private void jbtnAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAnularInscripcionActionPerformed
         // TODO add your handling code here:
+        int filaSeleccionada = jTable1.getSelectedRow();
+        if(filaSeleccionada!= -1){
+            Alumno a = (Alumno)jcbAlumnos.getSelectedItem();
+            int idMateria = (Integer)modelo.getValueAt(filaSeleccionada,0);
+            inscripcionData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idMateria);
+            
+            borrarFilaTabla();
+        }
     }//GEN-LAST:event_jbtnAnularInscripcionActionPerformed
 
     private void jrbInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInscriptasActionPerformed
@@ -244,8 +262,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         borrarFilaTabla();
         jrbInscriptas.setSelected(true);
         cargaDatosNoInscriptas();
-        jbtnInscribir.setEnabled(true);
-        jbtnAnularInscripcion.setEnabled(false);
+        jbtnInscribir.setEnabled(false);
+        jbtnAnularInscripcion.setEnabled(true);
     }//GEN-LAST:event_jrbInscriptasActionPerformed
     
     private void borrarFilaTabla(){
@@ -258,15 +276,15 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     private void cargaDatosNoInscriptas(){
         //borrarFilasTabla();
         Alumno actual = (Alumno)jcbAlumnos.getSelectedItem();
-        listaMaterias = (ArrayList) inscripcionData.obtenerMateriasNoCursadas(actual.getIdAlumno());
-        for(Materia m: listaMaterias){
+        listaNoMaterias = (ArrayList) inscripcionData.obtenerMateriasNoCursadas(actual.getIdAlumno());
+        for(Materia m: listaNoMaterias){
             modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAnio()});
         }
     }
     
     private void cargaDatosInscriptas(){
         Alumno actual = (Alumno)jcbAlumnos.getSelectedItem();
-        listaNoMaterias = (ArrayList) inscripcionData.obtenerMateriasNoCursadas(actual.getIdAlumno());
+        listaMaterias = (ArrayList) inscripcionData.obtenerMateriasCursadas(actual.getIdAlumno());
         for(Materia m: listaMaterias){
             modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAnio()});
         }
