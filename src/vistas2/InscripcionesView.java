@@ -93,6 +93,11 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,6 +217,11 @@ public class InscripcionesView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Usted debe seleccionnar una materia");
         }
     }//GEN-LAST:event_jbAnularActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void borrarFilas(){
         int filas=modelo.getRowCount()-1;//le pide al modelo la cantidad de filas menos 1 ya que va de 0

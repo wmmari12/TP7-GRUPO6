@@ -1,41 +1,27 @@
 
 package vistas2;
 
-import AccesoADatos.AlumnoData;
-import AccesoADatos.InscripcionData;
-import AccesoADatos.MateriaData;
+import AccesoADatos.*;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import tp7.grupo6.Alumno;
-import tp7.grupo6.Inscripcion;
-import tp7.grupo6.Materia;
+import tp7.grupo6.*;
 
 public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     
-    private ArrayList<Inscripcion> listaInscripcion;
-    private ArrayList<Materia> listaMaterias;
-    private ArrayList<Materia> listaNoMaterias;
-    private ArrayList<Alumno> listaAlumnos;
-    private InscripcionData inscripcionData;
-    private MateriaData materiaData;
-    private AlumnoData alumnoData;
-    private DefaultTableModel modelo;
+    private InscripcionData inscripcionData = new InscripcionData();
+    private AlumnoData alumnoData = new AlumnoData();
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     
     
     public ViewFormInscripcion() {
         initComponents();
-        alumnoData = new AlumnoData();
-        listaAlumnos = (ArrayList<Alumno>)alumnoData.listarAlumno();
-        modelo = new DefaultTableModel();
-        
-        cargaAlumnos();
-        tituloDeTabla();
-        inscripcionData = new InscripcionData();
-        materiaData = new MateriaData();
-        
-        
-        
-        
+        initComponents();
+        cargarAlumnos();
+        armarCabecera();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -51,8 +37,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         jrbNoInscriptas = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtMaterias = new javax.swing.JTable();
-        jbtnInscribir = new javax.swing.JButton();
-        jbtnAnularInscripcion = new javax.swing.JButton();
+        jbInscribir = new javax.swing.JButton();
+        jbAnular = new javax.swing.JButton();
         jbtnSalir = new javax.swing.JButton();
         jcbAlumnos = new javax.swing.JComboBox<>();
 
@@ -116,17 +102,17 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             jtMaterias.getColumnModel().getColumn(3).setHeaderValue("Title 4");
         }
 
-        jbtnInscribir.setText("Inscribir");
-        jbtnInscribir.addActionListener(new java.awt.event.ActionListener() {
+        jbInscribir.setText("Inscribir");
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnInscribirActionPerformed(evt);
+                jbInscribirActionPerformed(evt);
             }
         });
 
-        jbtnAnularInscripcion.setText("Anular Inscripcion");
-        jbtnAnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
+        jbAnular.setText("Anular Inscripcion");
+        jbAnular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnAnularInscripcionActionPerformed(evt);
+                jbAnularActionPerformed(evt);
             }
         });
 
@@ -158,9 +144,9 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(107, 107, 107)
-                            .addComponent(jbtnInscribir)
+                            .addComponent(jbInscribir)
                             .addGap(18, 18, 18)
-                            .addComponent(jbtnAnularInscripcion)
+                            .addComponent(jbAnular)
                             .addGap(18, 18, 18)
                             .addComponent(jbtnSalir))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -190,8 +176,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnInscribir)
-                    .addComponent(jbtnAnularInscripcion)
+                    .addComponent(jbInscribir)
+                    .addComponent(jbAnular)
                     .addComponent(jbtnSalir))
                 .addGap(16, 16, 16))
         );
@@ -199,24 +185,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void cargaAlumnos(){
-        for(Alumno item: listaAlumnos){
-            jcbAlumnos.addItem(item);
-        }
-    }
-    public void tituloDeTabla(){
-        
-        ArrayList<String> filaTitulo = new ArrayList();
-        filaTitulo.add("ID");
-        filaTitulo.add("Nombre");
-        filaTitulo.add("Año");
-       
-        for (Object object : filaTitulo)
-        {
-            modelo.addColumn(object);      
-        }
-        jTable1.setModel(modelo);
-    }
+    
+    
     private void jbtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalirActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -224,78 +194,60 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
 
     private void jrbNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNoInscriptasActionPerformed
         // TODO add your handling code here:
-        borrarFilaTabla();
         jrbInscriptas.setSelected(false);
-        cargaDatosNoInscriptas();
-        jbtnInscribir.setEnabled(true);
-        jbtnAnularInscripcion.setEnabled(false);
+        jrbNoInscriptas.setSelected(true);
+        jbAnular.setEnabled(false);
+        jbInscribir.setEnabled(true);
+        borrarFilas();
+        llenarTabla();
     }//GEN-LAST:event_jrbNoInscriptasActionPerformed
 
-    private void jbtnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnInscribirActionPerformed
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
-        int filaSelec = jTable1.getSelectedRow();
-        if(filaSelec!= -1){
-            Alumno alumno = (Alumno)jcbAlumnos.getSelectedItem();
-            
-            int idMateria = (Integer)modelo.getValueAt(filaSelec, 0);
-            String nomMateria = (String)modelo.getValueAt(filaSelec, 1);
-            int anio = (Integer)modelo.getValueAt(filaSelec, 2);
-            boolean estado= (boolean) modelo.getValueAt(filaSelec, 3);
-            Materia materia = new Materia(idMateria, nomMateria, anio,true);
-            
-            Inscripcion inscripcion = new Inscripcion(0,alumno,materia);
-            
-            inscripcionData.guardarInscripcion(inscripcion);
-            
-//            borrarFilaTabla();
+       Alumno alumnoSeleccionado=(Alumno) jcbAlumnos.getSelectedItem();
+        //si no se selecciona ninguna materia devuelve un valor -1
+        int filaSelec=jtMaterias.getSelectedRow();
+        if (filaSelec !=-1){
+//            
+            int idM=(Integer)modelo.getValueAt(filaSelec, 0);//porque era un object
+            Materia mat=new Materia();
+            mat.setIdMateria(idM);
+            Inscripcion insc=new Inscripcion(0,alumnoSeleccionado, mat);
+            inscripcionData.guardarInscripcion(insc);
+            borrarFilas();
+        }else{
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionnar una materia");
         }
-    }//GEN-LAST:event_jbtnInscribirActionPerformed
+        
+    }//GEN-LAST:event_jbInscribirActionPerformed
 
-    private void jbtnAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAnularInscripcionActionPerformed
+    private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         // TODO add your handling code here:
-        int filaSeleccionada = jTable1.getSelectedRow();
-        if(filaSeleccionada!= -1){
-            Alumno a = (Alumno)jcbAlumnos.getSelectedItem();
-            int idMateria = (Integer)modelo.getValueAt(filaSeleccionada,0);
-            inscripcionData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idMateria);
-            
-            borrarFilaTabla();
+        Alumno alumnoSeleccionado=(Alumno) jcbAlumnos.getSelectedItem();
+        //si no se selecciona ninguna materia devuelve un valor -1
+        int filaSelec=jtMaterias.getSelectedRow();
+        if (filaSelec !=-1){
+//            
+            int idM=(Integer)modelo.getValueAt(filaSelec, 0);//porque era un object
+            inscripcionData.borrarInscripcionMateriaAlumno(alumnoSeleccionado.getIdAlumno(), filaSelec);
+            borrarFilas();
+        }else{
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionnar una materia");
         }
-    }//GEN-LAST:event_jbtnAnularInscripcionActionPerformed
+    }//GEN-LAST:event_jbAnularActionPerformed
 
     private void jrbInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbInscriptasActionPerformed
         // TODO add your handling code here:
-        borrarFilaTabla();
+        jrbInscriptas.setSelected(true);
         jrbNoInscriptas.setSelected(false);
-        cargaDatosInscriptas();
-        jbtnAnularInscripcion.setEnabled(true);
-        jbtnInscribir.setEnabled(false);
+        jbAnular.setEnabled(true);
+        jbInscribir.setEnabled(false);
+        borrarFilas();
+        llenarTabla();
         
     }//GEN-LAST:event_jrbInscriptasActionPerformed
     
-    private void borrarFilaTabla(){
-        int indice = modelo.getRowCount() -1;
-        
-        for (int i = indice;i>=0;i--){
-            modelo.removeRow(i);
-        }
-    }
-    private void cargaDatosNoInscriptas(){
-        
-        Alumno actual = (Alumno)jcbAlumnos.getSelectedItem();
-        listaNoMaterias = (ArrayList) inscripcionData.obtenerMateriasNoCursadas(actual.getIdAlumno());
-        for(Materia m: listaNoMaterias){
-            modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAnio()});
-        }
-    }
     
-    private void cargaDatosInscriptas(){
-        Alumno actual = (Alumno)jcbAlumnos.getSelectedItem();
-        listaMaterias = (ArrayList) inscripcionData.obtenerMateriasCursadas(actual.getIdAlumno());
-        for(Materia m: listaMaterias){
-            modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAnio()});
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -303,12 +255,71 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbtnAnularInscripcion;
-    private javax.swing.JButton jbtnInscribir;
+    private javax.swing.JButton jbAnular;
+    private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbtnSalir;
     private javax.swing.JComboBox<Alumno> jcbAlumnos;
     private javax.swing.JRadioButton jrbInscriptas;
     private javax.swing.JRadioButton jrbNoInscriptas;
     private javax.swing.JTable jtMaterias;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarAlumnos() {
+        List<Alumno> alumnos = alumnoData.listarAlumno();
+        for (Alumno alumno : alumnos)//recorre la lista y los agrega de a uno
+        {
+            jcbAlumnos.addItem(alumno);
+        }    }
+
+    private void armarCabecera() {
+        ArrayList<Object> titulos = new ArrayList();
+        titulos.add("ID");
+        titulos.add("Nombre");
+        titulos.add("Año");
+        for (Object titulo : titulos)
+        {
+            modelo.addColumn(titulo);
+        }
+        jtMaterias.setModel(modelo);
+    }
+    private void llenarTabla() {
+        //primero debemos tener el id del alumno
+        Alumno alumno = (Alumno) jcbAlumnos.getSelectedItem();
+        //int idALumno=(Integer) jcbAlumnos.getSelectdItem();
+        if (jrbNoInscriptas.isSelected())
+        {
+
+            List<Materia> materias = inscripcionData.obtenerMateriasNoCursadas(alumno.getIdAlumno());
+            //mandamos la lista a la tabla 
+            for (Materia materia : materias)
+            {
+                //se crea el objeto de a uno agregandolo a las filas
+                modelo.addRow(new Object[]
+                {
+                    materia.getIdMateria(), materia.getNombre(), materia.getAnio()
+                });
+
+            }
+        } else
+        {
+            List<Materia> materias = inscripcionData.obtenerMateriasCursadas(alumno.getIdAlumno());
+            //mandamos la lista a la tabla 
+            for (Materia materia : materias)
+            {
+                //se crea el objeto de a uno agregandolo a las filas
+                modelo.addRow(new Object[]
+                {
+                    materia.getIdMateria(), materia.getNombre(), materia.getAnio()
+                });
+            }
+        }
+    }
+
+    private void borrarFilas() {
+        int filas=modelo.getRowCount()-1;//le pide al modelo la cantidad de filas menos 1 ya que va de 0
+        
+        for (int i = filas; i >=0; i--)
+        {
+            modelo.removeRow(i);
+        }    }
 }

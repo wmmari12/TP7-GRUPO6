@@ -152,6 +152,8 @@ public class Menu extends javax.swing.JFrame {
         vfi.setVisible(true);//hacerla visible
         escritorio.add(vfi);//agregarla al escritorio
         escritorio.moveToFront(vfi);//llevarla al frente
+        
+        
 //        escritorio.removeAll();//removemos todo
 //        escritorio.repaint();
 //        ViewFormInscripcion vfi= new ViewFormInscripcion();//crer nueva ventana
