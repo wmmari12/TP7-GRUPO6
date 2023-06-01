@@ -209,12 +209,12 @@ public class InscripcionData {
             ps.setInt(1, idAlumno);
             ps.setInt(2, idMateria);
             int fila = ps.executeUpdate();
-            if (fila == 1)
+            if (fila ==1)
             {
                 JOptionPane.showMessageDialog(null, "La inscripcion ha sido borrada.");
             } else
             {
-                JOptionPane.showMessageDialog(null, "La inscripcion no puedo ser borrada.");
+                JOptionPane.showMessageDialog(null, "La inscripcion no pudo ser borrada.");
             }
             ps.close();
         } catch (SQLException ex)
