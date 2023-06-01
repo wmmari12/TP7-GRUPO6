@@ -29,18 +29,20 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
         jlCargaNotasTit = new javax.swing.JLabel();
         jlAlumno = new javax.swing.JLabel();
-        cBoxAlumno = new javax.swing.JComboBox<>();
+        jcbAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jbtnGuardar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
+
+        setTitle("Carga de Notas");
 
         jlCargaNotasTit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jlCargaNotasTit.setText("-CARGA DE NOTAS-");
 
         jlAlumno.setText("Alumno");
 
-        cBoxAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,7 +68,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
         jbtnGuardar.setText("Guardar");
 
-        jbtnCancelar.setText("Cancelar");
+        jbtnCancelar.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +80,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                         .addGap(95, 95, 95)
                         .addComponent(jlAlumno)
                         .addGap(18, 18, 18)
-                        .addComponent(cBoxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(jlCargaNotasTit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -100,7 +102,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlAlumno)
-                    .addComponent(cBoxAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -115,11 +117,11 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cBoxAlumno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton jbtnCancelar;
     private javax.swing.JButton jbtnGuardar;
+    private javax.swing.JComboBox<String> jcbAlumno;
     private javax.swing.JLabel jlAlumno;
     private javax.swing.JLabel jlCargaNotasTit;
     // End of variables declaration//GEN-END:variables

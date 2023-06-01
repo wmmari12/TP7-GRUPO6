@@ -143,15 +143,19 @@ public class InscripcionData {
 
         try
         {
-            String sql = "SELECT inscripcion.idMateria, nombre, año "
-                    + "FROM inscripcion,materia WHERE inscripcion.idMateria = materia.idMateria"
-                    + "AND inscripcion.idAlumno = ?";
+            String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion\n" +
+                         "INNER JOIN materia ON inscripcion.idMateria = materia.idMateria  \n" +
+                         "WHERE inscripcion.idAlumno = ?";
+//                    + "SELECT inscripcion.idMateria, nombre, año "
+//                    + "FROM inscripcion,materia WHERE inscripcion.idMateria = materia.idMateria"
+//                    + "AND inscripcion.idAlumno = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+            Materia materia;
             while (rs.next())
             {
-                Materia materia = new Materia();
+                materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
@@ -161,7 +165,7 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno-1-"+ex.getMessage()+"--"+ex.getErrorCode()+"-"+ex.getLocalizedMessage());
         }
 
         return materias;
@@ -190,7 +194,7 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno-2-"+ex.getMessage());
         }
 
         return materias;
@@ -239,7 +243,7 @@ public class InscripcionData {
 
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno7");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno7"+ex.getMessage());
         }
 
     }
@@ -267,7 +271,7 @@ public class InscripcionData {
             ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno--"+ex.getMessage());
         }
         return alumnosXMateria;
     }
