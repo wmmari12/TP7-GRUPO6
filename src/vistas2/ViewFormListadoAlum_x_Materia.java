@@ -5,17 +5,28 @@
  */
 package vistas2;
 
-/**
- *
- * @author Win10
- */
-public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
+    import AccesoADatos.*;
+    import java.util.ArrayList;
+    import java.util.List;
 
-    /**
-     * Creates new form ViewFormListadoAlum_x_Materia
-     */
+    import javax.swing.table.DefaultTableModel;
+    import tp7.grupo6.*;
+public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
+    
+    private ArrayList<Inscripcion> listaInscriptos;
+    private DefaultTableModel modeloTab;
+    private InscripcionData inscripcionData;
+    private MateriaData materiaData;
+    private AlumnoData alumnoData;
+    
     public ViewFormListadoAlum_x_Materia() {
         initComponents();
+        Materia mat = new Materia();
+        listaInscriptos =new ArrayList<>();
+        modeloTab = new DefaultTableModel();
+        
+        cargaMaterias();
+        tituloDeTabla();
     }
 
     /**
@@ -29,7 +40,7 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbMaterias = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -38,7 +49,11 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Materia");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMateriasActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,7 +87,7 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -84,7 +99,7 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -93,12 +108,39 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMateriasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<Materia> jcbMaterias;
     // End of variables declaration//GEN-END:variables
+
+    public void cargaMaterias(){
+        List<Materia> materias= materiaData.listarMaterias();
+        for(Materia item: materias){
+            jcbMaterias.addItem(item);
+        }
+    }
+    public void tituloDeTabla(){
+        
+        ArrayList<String> filaTitulo = new ArrayList();
+        filaTitulo.add("ID");
+        filaTitulo.add("Nombre");
+        filaTitulo.add("Nota");
+       
+        for (Object object : filaTitulo)
+        {
+            modeloTab.addColumn(object);      
+        }
+        jTable1.setModel(modeloTab);
+    }
+    
+
 }
+
