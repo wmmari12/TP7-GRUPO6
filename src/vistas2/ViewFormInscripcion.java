@@ -216,7 +216,7 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             inscripcionData.guardarInscripcion(insc);
             borrarFilas();
         }else{
-            JOptionPane.showMessageDialog(this, "Usted debe seleccionnar una materia");
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }
         
     }//GEN-LAST:event_jbInscribirActionPerformed
@@ -229,10 +229,10 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         if (filaSelec !=-1){
 //            
             int idM=(Integer)modelo.getValueAt(filaSelec, 0);//porque era un object
-            inscripcionData.borrarInscripcionMateriaAlumno(alumnoSeleccionado.getIdAlumno(), filaSelec);
+            inscripcionData.borrarInscripcionMateriaAlumno(alumnoSeleccionado.getIdAlumno(), idM);
             borrarFilas();
         }else{
-            JOptionPane.showMessageDialog(this, "Usted debe seleccionnar una materia");
+            JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }
     }//GEN-LAST:event_jbAnularActionPerformed
 

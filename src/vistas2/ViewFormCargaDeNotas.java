@@ -5,15 +5,17 @@
  */
 package vistas2;
 
+import tp7.grupo6.*;
+
 /**
  *
  * @author Win10
  */
 public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewFormCargaDeNotas
-     */
+    
+    
+    
     public ViewFormCargaDeNotas() {
         initComponents();
     }
