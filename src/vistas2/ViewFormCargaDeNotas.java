@@ -41,7 +41,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jbtnGuardar = new javax.swing.JButton();
-        jbtnCancelar = new javax.swing.JButton();
+        btnsalir = new javax.swing.JButton();
 
         setTitle("Carga de Notas");
 
@@ -74,7 +74,12 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
 
         jbtnGuardar.setText("Guardar");
 
-        jbtnCancelar.setText("Salir");
+        btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,7 +102,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                         .addGap(204, 204, 204)
                         .addComponent(jbtnGuardar)
                         .addGap(71, 71, 71)
-                        .addComponent(jbtnCancelar)))
+                        .addComponent(btnsalir)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,18 +119,22 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnGuardar)
-                    .addComponent(jbtnCancelar))
+                    .addComponent(btnsalir))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnsalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbtnCancelar;
     private javax.swing.JButton jbtnGuardar;
     private javax.swing.JComboBox<Alumno> jcbAlumno;
     private javax.swing.JLabel jlAlumno;

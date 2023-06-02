@@ -16,8 +16,8 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
     private ArrayList<Inscripcion> listaInscriptos;
     private DefaultTableModel modeloTab;
     private InscripcionData inscripcionData;
-    private MateriaData materiaData;
-    private AlumnoData alumnoData;
+    private MateriaData materiaData=new MateriaData();
+    private AlumnoData alumnoData= new AlumnoData();
     
     public ViewFormListadoAlum_x_Materia() {
         initComponents();
@@ -43,6 +43,8 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
         jcbMaterias = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+
+        setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("-LISTADO DE ALUMNOS POR MATERIA-");
