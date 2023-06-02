@@ -111,6 +111,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu8.setText("Consultas");
 
         jMenuItemListadoAlumnos.setText("Listado de Alumnos x Materia");
+        jMenuItemListadoAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListadoAlumnosActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItemListadoAlumnos);
 
         jMenuBar2.add(jMenu8);
@@ -177,6 +182,16 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jMenuItemManipularNotasActionPerformed
+
+    private void jMenuItemListadoAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListadoAlumnosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();//removemos todo
+        escritorio.repaint();
+        ViewFormListadoAlum_x_Materia vfAxM= new ViewFormListadoAlum_x_Materia();//crer nueva ventana
+        vfAxM.setVisible(true);//hacerla visible
+        escritorio.add(vfAxM);//agregarla al escritorio
+        escritorio.moveToFront(vfAxM);//llevarla al frente
+    }//GEN-LAST:event_jMenuItemListadoAlumnosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -123,6 +123,12 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             }
         });
 
+        jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -246,6 +252,10 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
         llenarTabla();
         
     }//GEN-LAST:event_jrbInscriptasActionPerformed
+
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
