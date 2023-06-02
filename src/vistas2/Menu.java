@@ -103,6 +103,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu7.setText("Carga de Notas");
 
         jMenuItemManipularNotas.setText("Manipulacion de Notas");
+        jMenuItemManipularNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManipularNotasActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItemManipularNotas);
 
         jMenuBar2.add(jMenu7);
@@ -171,6 +176,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(vfa);//agregarla al escritorio
         escritorio.moveToFront(vfa);//llevarla al frente
     }//GEN-LAST:event_jMenuItemFormAlumnosActionPerformed
+
+    private void jMenuItemManipularNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManipularNotasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItemManipularNotasActionPerformed
 
     /**
      * @param args the command line arguments
