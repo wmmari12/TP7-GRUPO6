@@ -17,7 +17,7 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
     
     
     public ViewFormInscripcion() {
-        initComponents();
+        
         initComponents();
         cargarAlumnos();
         armarCabecera();

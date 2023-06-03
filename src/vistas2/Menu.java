@@ -190,22 +190,31 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItemManipularNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManipularNotasActionPerformed
         // TODO add your handling code here:
-        
+        escritorio.removeAll();//removemos todo
+        escritorio.repaint();
+        ViewFormCargaDeNotas vfcn= new ViewFormCargaDeNotas();//crer nueva ventana
+        vfcn.setVisible(true);//hacerla visible
+        escritorio.add(vfcn);//agregarla al escritorio
+        escritorio.moveToFront(vfcn);//llevarla al frente
     }//GEN-LAST:event_jMenuItemManipularNotasActionPerformed
 
     private void jMenuItemListadoAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListadoAlumnosActionPerformed
-        // TODO add your handling code here:
-        System.out.println("pasando");
+       //ES ESTE EL MENU ITEM
         escritorio.removeAll();//removemos todo
         escritorio.repaint();
-        ViewFormListadoAlum_x_Materia vfAxM= new ViewFormListadoAlum_x_Materia();//crer nueva ventana
-        vfAxM.setVisible(true);//hacerla visible
-        escritorio.add(vfAxM);//agregarla al escritorio
-        escritorio.moveToFront(vfAxM);//llevarla al frente
+        ViewFormListadoAlumno vfla= new ViewFormListadoAlumno();//crer nueva ventana
+        vfla.setVisible(true);//hacerla visible
+        escritorio.add(vfla);//agregarla al escritorio
+        escritorio.moveToFront(vfla);//llevarla al frente
     }//GEN-LAST:event_jMenuItemListadoAlumnosActionPerformed
 
     private void jMenuListadoAlumXmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListadoAlumXmateriaActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();//removemos todo
+        escritorio.repaint();
+        ViewFormListadoAlumno vfla= new ViewFormListadoAlumno();//crer nueva ventana
+        vfla.setVisible(true);//hacerla visible
+        escritorio.add(vfla);//agregarla al escritorio
+        escritorio.moveToFront(vfla);//llevarla al frente
 
     }//GEN-LAST:event_jMenuListadoAlumXmateriaActionPerformed
 

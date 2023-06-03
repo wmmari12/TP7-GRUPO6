@@ -11,19 +11,14 @@ package vistas2;
 
     import javax.swing.table.DefaultTableModel;
     import tp7.grupo6.*;
-public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
+public class ViewFormListadoAlumno extends javax.swing.JInternalFrame {
     
-    private ArrayList<Inscripcion> listaInscriptos;
-    private DefaultTableModel modeloTab;
-    private InscripcionData inscripcionData;
+    private DefaultTableModel modelo=new DefaultTableModel();
+    private InscripcionData inscripcionData=new InscripcionData();
     private MateriaData materiaData=new MateriaData();
-    private AlumnoData alumnoData= new AlumnoData();
     
-    public ViewFormListadoAlum_x_Materia() {
+    public ViewFormListadoAlumno() {
         initComponents();
-        Materia mat = new Materia();
-        listaInscriptos =new ArrayList<>();
-        modeloTab = new DefaultTableModel();
         
         cargaMaterias();
         tituloDeTabla();
@@ -43,6 +38,7 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
         jcbMaterias = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setVisible(true);
 
@@ -75,23 +71,36 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(jButton1)))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +113,9 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
                     .addComponent(jcbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,10 +123,22 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
 
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
         // TODO add your handling code here:
+        Materia materiaSeleccionada=(Materia)jcbMaterias.getSelectedItem();
+            List<Alumno> alumnos=inscripcionData.obtenerAlumnosXMateria(materiaSeleccionada.getIdMateria());
+            
+            for(Alumno alu: alumnos){
+                modelo.addRow(new Object[] {alu.getIdAlumno(),alu.getDni(),alu.getApellido(),alu.getNombre()});
+            }
     }//GEN-LAST:event_jcbMateriasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -124,6 +147,7 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void cargaMaterias(){
+        jcbMaterias.removeAllItems();
         List<Materia> materias= materiaData.listarMaterias();
         for(Materia item: materias){
             jcbMaterias.addItem(item);
@@ -133,14 +157,14 @@ public class ViewFormListadoAlum_x_Materia extends javax.swing.JInternalFrame {
         
         ArrayList<String> filaTitulo = new ArrayList();
         filaTitulo.add("ID");
-        filaTitulo.add("Nombre");
-        filaTitulo.add("Nota");
+        filaTitulo.add("DNI");
+        filaTitulo.add("APELLIDO");
        
         for (Object object : filaTitulo)
         {
-            modeloTab.addColumn(object);      
+            modelo.addColumn(object);      
         }
-        jTable1.setModel(modeloTab);
+        jTable1.setModel(modelo);
     }
     
 

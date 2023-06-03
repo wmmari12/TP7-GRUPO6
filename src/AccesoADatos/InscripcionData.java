@@ -106,32 +106,38 @@ public class InscripcionData {
     public List<Inscripcion> obtenerInscripcionesPorAlumno(int id) {
 
         List<Inscripcion> inscripciones = new ArrayList<>();
-
+        Inscripcion inscripcion=null;
         try
         {
-            String sql = "SELECT * FROM `inscripcion' WHERE idAlumno=?";
+            String sql = "SELECT * FROM inscripcion WHERE idAlumno=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next())
             {
-                Inscripcion insc = new Inscripcion();
-                insc.setIdInscripcion(rs.getInt("idInscripcion"));
-
-                Alumno a = nuevoAlumno(rs.getInt("idAlumno"));
-                insc.setAlumno(a);
-
-                Materia m = nuevaMateria(rs.getInt("idMateria"));
-                insc.setMateria(m);
-
-                insc.setNota(rs.getDouble("nota"));
-                inscripciones.add(insc);
+                Alumno alumno=alumData.buscarAlumno(rs.getInt("idAlumno"));
+                Materia materia = matData.buscarMateria(rs.getInt("idMateria"));
+                inscripcion = new Inscripcion(rs.getDouble("nota"),alumno, materia);
+                System.out.println(alumno.getNombre() + " - " + materia.getNombre());
+                
+                
+//                Inscripcion insc = new Inscripcion();
+//                insc.setIdInscripcion(rs.getInt("idInscripcion"));
+//
+//                Alumno a = nuevoAlumno(rs.getInt("idAlumno"));
+//                insc.setAlumno(a);
+//
+//                Materia m = nuevaMateria(rs.getInt("idMateria"));
+//                insc.setMateria(m);
+//
+//                insc.setNota(rs.getDouble("nota"));
+//                inscripciones.add(insc);
             }
             ps.close();
         } catch (SQLException ex)
         {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Inscripciones " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Inscripciones1 " + ex.getMessage());
         }
 
         return inscripciones;
