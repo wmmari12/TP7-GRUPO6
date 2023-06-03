@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas2;
 
 import AccesoADatos.MateriaData;
@@ -190,6 +186,8 @@ public class ViewFormMaterias extends javax.swing.JInternalFrame {
 
     private void jbtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnGuardarActionPerformed
         // TODO add your handling code here:
+        Materia mat = null;
+        
         try
         {
             //Obtenemos los datos ingresados por el usuario

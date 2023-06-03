@@ -221,6 +221,8 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
             Inscripcion insc=new Inscripcion(0,alumnoSeleccionado, mat);
             inscripcionData.guardarInscripcion(insc);
             borrarFilas();
+            
+            
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }
@@ -229,14 +231,17 @@ public class ViewFormInscripcion extends javax.swing.JInternalFrame {
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         // TODO add your handling code here:
-        Alumno alumnoSeleccionado=(Alumno) jcbAlumnos.getSelectedItem();
+        
         //si no se selecciona ninguna materia devuelve un valor -1
         int filaSelec=jtMaterias.getSelectedRow();
         if (filaSelec !=-1){
+            
+            Alumno alumnoSeleccionado=(Alumno) jcbAlumnos.getSelectedItem();
 //            
             int idM=(Integer)modelo.getValueAt(filaSelec, 0);//porque era un object
             inscripcionData.borrarInscripcionMateriaAlumno(alumnoSeleccionado.getIdAlumno(), idM);
             borrarFilas();
+            llenarTabla();
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }

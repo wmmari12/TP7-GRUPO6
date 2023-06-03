@@ -120,7 +120,7 @@ public class InscripcionData {
                 Materia materia = matData.buscarMateria(rs.getInt("idMateria"));
                 inscripcion = new Inscripcion(rs.getDouble("nota"),alumno, materia);
                 System.out.println(alumno.getNombre() + " - " + materia.getNombre());
-                
+                inscripciones.add(inscripcion);
                 
 //                Inscripcion insc = new Inscripcion();
 //                insc.setIdInscripcion(rs.getInt("idInscripcion"));
