@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vistas2;
 
     import AccesoADatos.*;
     import java.util.ArrayList;
     import java.util.List;
-
     import javax.swing.table.DefaultTableModel;
     import tp7.grupo6.*;
+
 public class ViewFormListadoAlumno extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modelo=new DefaultTableModel();
@@ -123,6 +119,7 @@ public class ViewFormListadoAlumno extends javax.swing.JInternalFrame {
 
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
         // TODO add your handling code here:
+        borrarFilas();
         Materia materiaSeleccionada=(Materia)jcbMaterias.getSelectedItem();
             List<Alumno> alumnos=inscripcionData.obtenerAlumnosXMateria(materiaSeleccionada.getIdMateria());
             
@@ -166,7 +163,13 @@ public class ViewFormListadoAlumno extends javax.swing.JInternalFrame {
         }
         jTable1.setModel(modelo);
     }
-    
+    private void borrarFilas() {
+        int filas=modelo.getRowCount()-1;//le pide al modelo la cantidad de filas menos 1 ya que va de 0
+        
+        for (int i = filas; i >=0; i--)
+        {
+            modelo.removeRow(i);
+        }    }
 
 }
 

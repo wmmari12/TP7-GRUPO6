@@ -25,7 +25,7 @@ public class MateriaData {
     }
 
     public void guardarMateria(Materia materia) {
-
+        
         String sql = "INSERT INTO `materia`(`nombre`, `año`, `estado`) VALUES (?,?,?)";
         try
         {
@@ -42,6 +42,7 @@ public class MateriaData {
                 JOptionPane.showMessageDialog(null, "Materia cargada con exito");
             }else{
                 JOptionPane.showMessageDialog(null, "Materia no pudo ser agregada");
+                
             }
             ps.close();
         } catch (SQLException ex)

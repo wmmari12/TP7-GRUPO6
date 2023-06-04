@@ -6,9 +6,7 @@ import tp7.grupo6.Materia;
 public class Menu extends javax.swing.JFrame {
 
     
-    /**
-     * Creates new form Menu
-     */
+  
     public Menu() {
         initComponents();
        
@@ -161,15 +159,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFormMateriasActionPerformed
 
     private void jMenuItemManejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManejoInscripcionesActionPerformed
-        // TODO add your handling code here:
-//        escritorio.removeAll();//removemos todo
-//        escritorio.repaint();
-//        InscripcionesView vfi= new InscripcionesView();//crer nueva ventana
-//        vfi.setVisible(true);//hacerla visible
-//        escritorio.add(vfi);//agregarla al escritorio
-//        escritorio.moveToFront(vfi);//llevarla al frente
-        
-
+       
         escritorio.removeAll();//removemos todo
         escritorio.repaint();
         ViewFormInscripcion vfi= new ViewFormInscripcion();//crer nueva ventana
