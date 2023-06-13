@@ -12,54 +12,29 @@ import javax.swing.table.DefaultTableModel;
 public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
     
       private AlumnoData alumnoData=new AlumnoData();
-
-      DefaultTableModel modelo= new DefaultTableModel();
       private InscripcionData inscripcionData=new InscripcionData();
-      private MateriaData materiaData=new MateriaData();
-      private List<Materia> listaMaterias;
+      private List<Alumno> alumnos;
+      private List<Inscripcion> insc;
+      
     
     public ViewFormCargaDeNotas() {
         initComponents();
         
         cargaAlumnos();
-        mofCabecera();
     }
     
     private void cargaAlumnos(){
 
         jcbAlumno.removeAllItems();
-        List<Alumno> alumnos= alumnoData.listarAlumno();
-        for(Alumno item: alumnos){
-            jcbAlumno.addItem(item);
-        }
-        
-
-    }
-    
-    private void mofCabecera(){
-        ArrayList<Object> titulos = new ArrayList();
-        titulos.add("Alumno");
-        titulos.add("Materia");
-        titulos.add("Nota");
-        
-        for (Object titulo : titulos)
-        {
-            modelo.addColumn(titulo);
-        }
-        jTable1.setModel(modelo);
-        
-    }
-    private void borraFilasTabla() {
-        if (modelo != null) {
-            int a = modelo.getRowCount() - 1;
-
-            for (int i = a; i >= 0; i--) {
-
-                modelo.removeRow(i);
+        this.alumnos= alumnoData.listarAlumno();
+        for(Alumno alum: alumnos){
+            if(alum.isEstado()==true){
+            jcbAlumno.addItem(alum);
             }
         }
     }
     
+//  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,8 +46,6 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         btnGuardar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
-        jtfNota = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Carga de Notas");
 
@@ -104,7 +77,7 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "ID MATERIA", "MATERIA", "NOTA"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -123,20 +96,12 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jtfNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNotaActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Cargar nota");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(jlAlumno)
@@ -149,17 +114,12 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                                 .addComponent(jcbAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfNota, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnsalir)
-                        .addGap(46, 46, 46)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addGap(133, 133, 133)
+                                .addComponent(btnsalir))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -176,8 +136,6 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
-                    .addComponent(jtfNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
                     .addComponent(btnsalir))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -192,57 +150,48 @@ public class ViewFormCargaDeNotas extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
-        try{
-        int id=(int) (modelo.getValueAt(jTable1.getSelectedRow(),0));
-        Alumno alum=alumnoData.buscarAlumno(id);
-        double nota=(double) Double.parseDouble(jtfNota.getText());
-        Materia mat=(Materia)jcbAlumno.getSelectedItem();
-        inscripcionData.actualizarNota(alum.getIdAlumno(), mat.getIdMateria(), nota);
-        
-        cargaAlumnos();
-        JOptionPane.showMessageDialog(this, "Nota cargada con exito");
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Error al Cargar la nota"+ex);
+        for (int i = 0; i < jTable1.getRowCount(); i++)
+        {
+            int idAlumno = ((Alumno) jcbAlumno.getSelectedItem()).getIdAlumno();
+            int idMateria = Integer.parseInt(jTable1.getValueAt(i, 0).toString());
+            double nota = Double.parseDouble(jTable1.getValueAt(i, 2).toString());
+            
+            inscripcionData.actualizarNota(idAlumno, idMateria, nota);
+//            
         }
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed
        
+       try{
         
-        borraFilasTabla();
-        try{
-        Alumno alumSelec=(Alumno) jcbAlumno.getSelectedItem();
-        List <Inscripcion>inscripciones=inscripcionData.obtenerInscripcionesPorAlumno(alumSelec.getIdAlumno());
-        System.out.println(inscripciones+"entro");
-        for (Inscripcion insc : inscripciones){
+        insc=inscripcionData.obtenerInscripcionesPorAlumno(((Alumno) jcbAlumno.getSelectedItem()).getIdAlumno());
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
+        if(!insc.isEmpty()){
             
-            modelo.addRow(new Object[]{insc.getAlumno().getApellido(),insc.getMateria().getNombre(),insc.getNota()});
-            //modelo.addRow(new Object[]{insc.getMateria().getIdMateria(),insc.getMateria().getNombre(),insc.getNota()});
+        for (Inscripcion insc : insc){
+            
+            modelo.addRow(new Object[]{insc.getMateria().getIdMateria(),insc.getMateria().getNombre(),insc.getNota()});
+                    }
         }
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Error al cargar los alumnos en la tabla: "+ex);
+            JOptionPane.showMessageDialog(this, "Error al cargar los alumnos en la tabla1: "+ex.getMessage());
         }
         
-
-        
     }//GEN-LAST:event_jcbAlumnoActionPerformed
-
-    private void jtfNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNotaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNotaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<Alumno> jcbAlumno;
     private javax.swing.JLabel jlAlumno;
     private javax.swing.JLabel jlCargaNotasTit;
-    private javax.swing.JTextField jtfNota;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -239,7 +239,7 @@ public class InscripcionData {
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
             int fila = ps.executeUpdate();
-            if (fila == 1)
+            if (fila > 0)
             {
                 JOptionPane.showMessageDialog(null, "La nota ha sido modificada");
             } else
